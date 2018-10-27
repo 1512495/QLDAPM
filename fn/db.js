@@ -7,7 +7,7 @@ exports.load = sql => {
             port: 3306,
             user: 'root',
             password: '',
-            database: 'laptop'
+            database: 'luyenthilop6'
         });
 
         cn.connect((err)=>{
@@ -19,9 +19,9 @@ exports.load = sql => {
 
         cn.query(sql, function(error, rows, fields) {
             if (error) {
-            	reject(error);
+                reject(error);
             } else {
-            	resolve(rows);
+                resolve(rows);
             }
 
             cn.end();
@@ -36,7 +36,7 @@ exports.save = sql => {
             port: 3306,
             user: 'root',
             password: '',
-            database: 'laptop'
+            database: 'lapluyenthilop6top'
         });
 
         cn.connect((err)=>{
