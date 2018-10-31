@@ -36,7 +36,7 @@ exports.save = sql => {
             port: 3306,
             user: 'root',
             password: '',
-            database: 'lapluyenthilop6top'
+            database: 'luyenthilop6'
         });
 
         cn.connect((err)=>{
