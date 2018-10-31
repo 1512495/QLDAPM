@@ -2,6 +2,8 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var exphbs_section = require('express-handlebars-sections');
 var path = require('path');
+var dethi = require('./controllers/dethiController');
+var cauhoi = require('./controllers/cauhoiController');
 
 var homeController = require("./controllers/homeController");
 
@@ -15,6 +17,10 @@ app.engine('hbs', exphbs({
     }
 }));
 app.set('view engine', 'hbs');
+// API DeThi
+app.use('/dethi', dethi);
+// API CauHoi
+app.use('/cauhoi', cauhoi);
 
 app.use(express.static(
     path.resolve(__dirname, 'public')
