@@ -1,0 +1,55 @@
+{{#section 'title'}}
+    <b>Exam</b>
+{{/section}}
+
+<div class="container" style="width: 100%">
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-lg-6">
+			<a class="btn btn-success" href="dethi/add" role="button">
+				<span class="glyphicon glyphicon-plus"></span>
+				Add
+			</a>
+		</div>
+	</div>
+	<div class="row">
+		<div >
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Mã Đề Thi</th>
+						<th>Mã môn học</th>
+						<th>Thời gian</th>
+						<th>Số câu</th>
+						<th>Số điểm một câu</th>
+						<th>Số lần thi</th>
+						<th>Ngày tạo</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each vm.dethi}}
+					<tr>
+						<td>{{MaDeThi}}</td>
+						<td>{{MaCauHoi}}</td>
+						<td>{{ThoiGian}}</td>
+						<td>{{SoCau}}</td>
+						<td>{{SoDiemMotCau}}</td>
+						<td>{{SoLanThi}}</td>
+						<td>{{NgayTao}}</td>
+						<td class="text-right">
+							<a class="btn btn-default btn-xs" href="/admin/dethi/delete?id={{MaDeThi}}" role="button" onclick="return confirm('Bạn có muốn xóa hay không')">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+							<a class="btn btn-default btn-xs" href="/admin/dethi/update?id={{MaDeThi}}" role="button">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+</div>
+<br><br><br><br>
