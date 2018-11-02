@@ -1,0 +1,56 @@
+{{#section 'title'}}
+    <b>Add Product</b>
+{{/section}}
+
+{{#if showResult}}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>OK!</strong> Test added.
+</div>
+{{/if}}
+
+<div class="container-fluid" >
+	<form action="add" method="POST" role="form" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="">Tên bài test</label>
+			<input type="text" class="form-control" name="name" value="{{name}}">
+		</div>
+		<div class="form-group">
+			<label for="">Môn học</label>
+			<select name="subject" class="form-control">
+				{{#each vm.subject}}
+					<option value="{{id}}">{{ten}}</option>
+				{{/each}}			
+			</select>
+		</div>
+        <div class="form-group">
+			<label for="">Câu hỏi</label>
+			<div name="question" class="form-control">
+				{{#each vm.question}}
+					<input type="checkbox" value="{{id}}">{{ten}}</option>
+				{{/each}}			
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="">Thời gian (s)</label>
+			<input type="number" name="time" class="form-control" value="{{time}}"/>
+		</div>
+		<div class="form-group">
+			<label for="">Điểm một câu</label>
+			<input type="number" class="form-control" name="point" value="{{point}}"/>
+		</div>
+		<div class="form-group">
+			<label for="">Số lần thi</label>
+			<input type="number" class="form-control" name="try">
+		</div>
+		<a class="btn btn-default" href="/admin/product" role="button">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+			Back
+		</a>
+		<button type="submit" class="btn btn-primary">
+			<span class="glyphicon glyphicon-ok"></span>
+			Add
+		</button>
+		<br><br><br><br>
+	</form>
+</div>
