@@ -1,0 +1,50 @@
+{{#section 'title'}}
+    <b>Bài làm</b>
+{{/section}}
+
+<div class="container" style="width: 97%">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Mã bài làm</th>
+						<th>Mã đề thi</th>
+						<th>Mã người dùng</th>
+						<th>Ngày thi</th>
+						<th>Số câu làm</th>
+						<th>Số câu đúng</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each vm.bailams}}
+					<tr>
+						<td>{{MaBaiLam}}</td>
+						<td>{{MaDeThi}}</td>
+						<td>{{MaNguoiDung}}</td>
+						<td>{{NgayThi}}</td>
+						<td>{{SoCauLam}}</td>
+						<td>{{SoCauDung}}</td>
+						<td class="text-right">
+							<a class="btn btn-default btn-xs" href="/admin/bailam/delete?id={{MaBaiLam}}" role="button" onclick="return confirm('Bạn có muốn xóa hay không')">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+							<a class="btn btn-default btn-xs" href="/admin/bailam/update?id={{MaBaiLam}}" role="button">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div >
+		<a class="btn btn-success" href="bailam/add" role="button">
+			<span class="glyphicon glyphicon-plus"></span>
+			Add
+		</a>
+	</div>
+</div>

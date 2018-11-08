@@ -1,56 +1,41 @@
 {{#section 'title'}}
-    <b>Add Product</b>
-{{/section}}
+<b>Add Question</b>
+{{/section}} 
 
 {{#if showResult}}
 <div class="alert alert-success">
 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>OK!</strong> Test added.
+	<strong>OK!</strong> Đề thi added.
 </div>
 {{/if}}
 
-<div class="container-fluid" >
-	<form action="add" method="POST" role="form" enctype="multipart/form-data">
+<div class="container-fluid">
+	<form method="post" role="form" action="add" >
+		
 		<div class="form-group">
-			<label for="">Tên bài test</label>
-			<input type="text" class="form-control" name="name">
-		</div>
-		<div class="form-group">
-			<label for="">Môn học</label>
-			<select name="subject" class="form-control">
-				{{#each vm.subject}}
-					<option value="{{id}}">{{ten}}</option>
-				{{/each}}			
-			</select>
-		</div>
-        <div class="form-group">
-			<label for="">Câu hỏi</label>
-			<div name="question" class="form-control">
-				{{#each vm.question}}
-					<input type="checkbox" value="{{id}}">{{ten}}</option>
-				{{/each}}			
-			</div>
+			<label for="">Thời gian</label>
+			<input type="text" class="form-control" name="ThoiGian" >
 		</div>
 		<div class="form-group">
-			<label for="">Thời gian (s)</label>
-			<input type="number" name="time" class="form-control"/>
+			<label for="">Số câu</label>
+			<input type="text" class="form-control" name="SoCau">
 		</div>
 		<div class="form-group">
-			<label for="">Điểm một câu</label>
-			<input type="number" class="form-control" name="point"/>
+			<label for="">Số điểm 1 câu</label>
+			<input type="text" class="form-control" name="SoDiemMotCau">
 		</div>
-		<div class="form-group">
-			<label for="">Số lần thi</label>
-			<input type="number" class="form-control" name="try">
-		</div>
-		<a class="btn btn-default" href="/admin/product" role="button">
+
+		<a class="btn btn-default" href="/admin/dethi" role="button">
 			<span class="glyphicon glyphicon-arrow-left"></span>
-			Back
+			Trở về
 		</a>
 		<button type="submit" class="btn btn-primary">
 			<span class="glyphicon glyphicon-ok"></span>
-			Add
+			Thêm
 		</button>
-		<br><br><br><br>
+		<br>
+		<br>
+		<br>
+		<br>
 	</form>
 </div>

@@ -1,0 +1,50 @@
+{{#section 'title'}}
+    <b>Câu Hỏi</b>
+{{/section}}
+
+<div class="container" style="width: 97%">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Mã đáp án</th>
+						<th>Mã câu hỏi</th>
+						<th>A</th>
+						<th>B</th>
+						<th>C</th>
+						<th>D</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each vm.dapans}}
+					<tr>
+						<td>{{MaDapAn}}</td>
+						<td>{{MaCauHoi}}</td>
+						<td>{{A}}</td>
+						<td>{{B}}</td>
+						<td>{{C}}</td>
+						<td>{{D}}</td>
+						<td class="text-right">
+							<a class="btn btn-default btn-xs" href="/admin/dapan/delete?id={{MaDapAn}}" role="button" onclick="return confirm('Bạn có muốn xóa hay không')">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+							<a class="btn btn-default btn-xs" href="/admin/dapan/update?id={{MaDapAn}}" role="button">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div >
+		<a class="btn btn-success" href="dapan/add" role="button">
+			<span class="glyphicon glyphicon-plus"></span>
+			Add
+		</a>
+	</div>
+</div>

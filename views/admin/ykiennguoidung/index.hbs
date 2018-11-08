@@ -1,0 +1,50 @@
+{{#section 'title'}}
+    <b>Ý kiến</b>
+{{/section}}
+
+{{#if koykien}}
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<strong>OK!</strong> Question updated.
+	</div>
+{{/if}}
+
+<div class="container" style="width: 97%">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Mã</th>
+						<th>Mã người dùng</th>
+						<th>Nội dung</th>
+						<th>Ngày gởi</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each ykien}}
+					<tr>
+						<td>{{MaYKien}}</td>
+						<td>{{MaNguoiDung}}</td>
+						<td>{{NoiDung}}</td>
+						<td>{{NgayGoi}}</td>
+						<td class="text-right">
+							<a class="btn btn-default btn-xs" href="/admin/ykien/delete?id={{MaYKien}}" role="button" onclick="return confirm('Bạn có muốn xóa hay không')">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div >
+		<a class="btn btn-success" href="ykien/add" role="button">
+			<span class="glyphicon glyphicon-plus"></span>
+			Add
+		</a>
+	</div>
+</div>

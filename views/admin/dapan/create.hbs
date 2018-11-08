@@ -1,0 +1,56 @@
+{{#section 'title'}}
+<b>Add Đáp án</b>
+{{/section}} 
+
+{{#if showResult}}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>OK!</strong> Đáp án added.
+</div>
+{{/if}}
+
+<div class="container-fluid">
+	<form method="post" role="form" action="add" enctype="multipart/form-data">
+		{{!-- <div class="form-group">
+			<label for="">Mã câu hỏi</label>
+			<select name="MaCauHoi" class="form-control">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+		</div> --}}
+		<div class="form-group">
+			<label for="">MaCauHoi</label>
+			<input type="text" class="form-control" name="MaCauHoi" >
+		</div>
+		<div class="form-group">
+			<label for="">A</label>
+			<input type="text" class="form-control" name="A" >
+		</div>
+		<div class="form-group">
+			<label for="">B</label>
+			<input type="text" class="form-control" name="B">
+		</div>
+		<div class="form-group">
+			<label for="">C</label>
+			<input type="text" class="form-control" name="C" >
+		</div>
+		<div class="form-group">
+			<label for="">D</label>
+			<input type="text" class="form-control" name="D">
+		</div>
+		<a class="btn btn-default" href="/admin/dapan" role="button">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+			Trở về
+		</a>
+		<button type="submit" class="btn btn-primary">
+			<span class="glyphicon glyphicon-ok"></span>
+			Thêm
+		</button>
+		<br>
+		<br>
+		<br>
+		<br>
+	</form>
+</div>

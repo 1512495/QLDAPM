@@ -1,0 +1,67 @@
+{{#section 'title'}}
+<b>Update Question</b>
+{{/section}} 
+
+{{#if showResult}}
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>OK!</strong> Question updated.
+</div>
+{{/if}}
+
+{{#with vm.cauhoi}}
+<div class="container-fluid">
+	<form method="POST" action="update" role="form" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="">Mã câu hỏi</label>
+			<input type="text" class="form-control" name="MaCauHoi" value="{{MaCauHoi}}">
+		</div>
+		<div class="form-group">
+			<label for="">Mã đề thi</label>
+			<select name="MaDeThi" class="form-control">
+				<option value="A">1</option>
+				<option value="B">2</option>
+				<option value="C">3</option>
+				<option value="D">4</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="">Nội dung</label>
+			<input type="text" class="form-control" name="NoiDung" value="{{NoiDung}}">
+		</div>
+		<div class="form-group">
+			<label for="">Hình minh họa</label>
+			<input type="file" class="form-control" name="HinhMinhHoa" value="{{HinhMinhHoa}}">
+		</div>
+		<div class="form-group">
+			<label for="">Môn học</label>
+			<select name="MaMonHoc" class="form-control">
+				{{#each subject}}
+					<option value="{{MaMonHoc}}">{{TenMonHoc}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="">Đáp án đúng</label>
+			<select name="DapAnDung" class="form-control">
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+				<option value="D">D</option>
+			</select>
+		</div>
+		<a class="btn btn-default" href="/admin/cauhoi" role="button">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+			Trở về
+		</a>
+		<button type="submit" class="btn btn-primary">
+			<span class="glyphicon glyphicon-ok"></span>
+			Update
+		</button>
+		<br>
+		<br>
+		<br>
+		<br>
+	</form>
+</div>
+{{/with}}
