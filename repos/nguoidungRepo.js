@@ -44,3 +44,8 @@ exports.update = (user) => {
     MatKhau='${user.MatKhau}', SDT='${user.SDT}', GioiTinh='${user.GioiTinh}' where MaNguoiDung = ${user.MaNguoiDung}`;
     return db.save(sql);
 }
+
+exports.single = id => {
+    var sql = `select * from nguoidung where MaNguoiDung = ${id}`;
+    return db.load(sql);
+}
