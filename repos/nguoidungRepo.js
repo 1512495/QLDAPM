@@ -35,10 +35,7 @@ exports.delete = (id) => {
     var sql = `DELETE from nguoidung where MaNguoiDung= ${id}`;
     return db.save(sql)
 }
-// exports.loadSubject = () => {
-//     var sql = 'select * from monhoc';
-//     return db.load(sql);
-// }
+
 exports.update = (user) => {
     var sql = `update nguoidung set TenNguoiDung = '${user.TenNguoiDung}', Email='${user.Email}',
     MatKhau='${user.MatKhau}', SDT='${user.SDT}', GioiTinh='${user.GioiTinh}' where MaNguoiDung = ${user.MaNguoiDung}`;
