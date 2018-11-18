@@ -17,7 +17,7 @@ exports.single = id => {
 }
 
 exports.add = (dethi) => {
-    var sql = `insert into dethi(ThoiGian, SoCau, SoDiemMotCau) values('${dethi.ThoiGian}','${dethi.SoCau}', '${dethi.SoDiemMotCau}')`;
+    var sql = `insert into dethi(TenDeThi, ThoiGian, SoCau, SoDiemMotCau) values('${dethi.TenDeThi}','${dethi.ThoiGian}','${dethi.SoCau}', '${dethi.SoDiemMotCau}')`;
     return db.save(sql);
 }
 
@@ -27,7 +27,7 @@ exports.delete = (id) => {
 }
 
 exports.update = (dethi) => {
-    var sql = `update dethi set ThoiGian = '${dethi.ThoiGian}',
+    var sql = `update dethi set TenDeThi = '${dethi.TenDeThi}', ThoiGian = '${dethi.ThoiGian}',
     SoCau='${dethi.SoCau}', SoDiemMotCau='${dethi.SoDiemMotCau}' where MaDeThi = '${dethi.MaDeThi}'`;
     return db.save(sql);
 }

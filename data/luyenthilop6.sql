@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 07, 2018 at 03:50 PM
+-- Generation Time: Nov 18, 2018 at 04:47 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `dapan` (
   `D` varchar(1000) NOT NULL,
   PRIMARY KEY (`MaDapAn`),
   KEY `MaCauHoi` (`MaCauHoi`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dapan`
@@ -76,8 +76,7 @@ CREATE TABLE IF NOT EXISTS `dapan` (
 
 INSERT INTO `dapan` (`MaDapAn`, `MaCauHoi`, `A`, `B`, `C`, `D`) VALUES
 (1, 5, 'Tố Hữu', 'Đỗ Phủ', 'Lý Bạch', 'Kim Đồng'),
-(2, 6, 'Newton', 'Pytago', 'Enstein', 'Viet'),
-(3, 7, '9', '9', '9', '9');
+(2, 6, 'Newtonss', 'Pytago', 'Enstein', 'Viet');
 
 -- --------------------------------------------------------
 
@@ -88,21 +87,25 @@ INSERT INTO `dapan` (`MaDapAn`, `MaCauHoi`, `A`, `B`, `C`, `D`) VALUES
 DROP TABLE IF EXISTS `dethi`;
 CREATE TABLE IF NOT EXISTS `dethi` (
   `MaDeThi` int(11) NOT NULL AUTO_INCREMENT,
+  `TenDeThi` varchar(300) NOT NULL,
   `ThoiGian` int(11) NOT NULL,
   `SoCau` int(11) NOT NULL,
   `SoDiemMotCau` int(11) NOT NULL,
   `NgayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`MaDeThi`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dethi`
 --
 
-INSERT INTO `dethi` (`MaDeThi`, `ThoiGian`, `SoCau`, `SoDiemMotCau`, `NgayTao`) VALUES
-(1, 20, 20, 2, '2018-11-07 13:34:21'),
-(2, 50, 50, 5, '2018-11-07 13:34:21'),
-(3, 40, 40, 4, '2018-11-07 13:34:59');
+INSERT INTO `dethi` (`MaDeThi`, `TenDeThi`, `ThoiGian`, `SoCau`, `SoDiemMotCau`, `NgayTao`) VALUES
+(1, '  Đề kiểm tra 15 phút tháng 8 - Môn Toán ', 20, 20, 2, '2018-11-07 13:34:21'),
+(2, '  Đề kiểm tra 15 phút tháng 9 - Môn Toán ', 50, 50, 5, '2018-11-07 13:34:21'),
+(3, '  Đề kiểm tra 15 phút tháng 10 - Môn Toán ', 40, 40, 4, '2018-11-07 13:34:59'),
+(5, '  Đề kiểm tra 15 phút tháng 11 - Môn Toán ', 50, 50, 50, '2018-11-08 09:48:15'),
+(6, '  Đề kiểm tra 45 phút tháng 10 - Môn Toán ', 45, 10, 1, '2018-11-18 16:21:30'),
+(7, '  Đề kiểm tra 45 phút tháng 11 - Môn Toán ', 45, 10, 1, '2018-11-18 16:21:30');
 
 -- --------------------------------------------------------
 
@@ -115,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `monhoc` (
   `MaMonHoc` int(11) NOT NULL AUTO_INCREMENT,
   `TenMonHoc` varchar(100) NOT NULL,
   PRIMARY KEY (`MaMonHoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `monhoc`
@@ -139,17 +142,20 @@ CREATE TABLE IF NOT EXISTS `nguoidung` (
   `Email` varchar(50) NOT NULL,
   `MatKhau` varchar(50) NOT NULL,
   `SDT` varchar(20) NOT NULL,
-  `GioiTinh` varchar(4) NOT NULL,
   PRIMARY KEY (`MaNguoiDung`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nguoidung`
 --
 
-INSERT INTO `nguoidung` (`MaNguoiDung`, `TenNguoiDung`, `Email`, `MatKhau`, `SDT`, `GioiTinh`) VALUES
-(1, 'Tấn Phan', 'tanphan0805@gmail.com', '12345', '0338082216', 'Nam'),
-(2, 'Phan Văn Tấn', 'phanvantan080597@gmail.com', '12345', '0123456789', 'Nam');
+INSERT INTO `nguoidung` (`MaNguoiDung`, `TenNguoiDung`, `Email`, `MatKhau`, `SDT`) VALUES
+(1, 'Tấn Phan', 'tanphan0805@gmail.com', '12345', '0338082216'),
+(2, 'Phan Văn Tấn', 'phanvantan080597@gmail.com', '12345', '0123456789'),
+(3, 'Phan Văn Tấn', 'tanphan0805@gmail.com', 'tanphan0805', '08732409328'),
+(4, 'Teo', 'teo123@gmail.com', '1', '0347'),
+(5, 'Xuân Sơn', 'xuan97@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '3465821'),
+(6, 'Teo a', 'xuan97@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '324234');
 
 -- --------------------------------------------------------
 
@@ -168,14 +174,7 @@ CREATE TABLE IF NOT EXISTS `thongtinbailam` (
   PRIMARY KEY (`MaBaiLam`),
   KEY `MaDeThi` (`MaDeThi`,`MaNguoiDung`),
   KEY `MaNguoiDung` (`MaNguoiDung`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `thongtinbailam`
---
-
-INSERT INTO `thongtinbailam` (`MaBaiLam`, `MaDeThi`, `MaNguoiDung`, `NgayThi`, `SoCauLam`, `SoCauDung`) VALUES
-(1, 1, 1, '2018-11-07 13:45:00', 10, 7);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -191,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `ykiennguoidung` (
   `NgayGoi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`MaYKien`),
   KEY `fk_yknd_nd` (`MaNguoiDung`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ykiennguoidung`

@@ -1,19 +1,35 @@
  <!-- services -->
-                        <div class="services">
-                              <h2>Sign Up</h2>
-                              <div class="services-grids">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6 login">
-                                          <input class="login-form" type="text" placeholder="Tên đăng nhập" required=" ">
-                                          <input class="login-form" type="text" placeholder="Email của bạn" required=" ">
-                                          <input class="login-form" type="text" placeholder="Số điện thoại" required=" ">
-                                          <input class="login-form" type="text" placeholder="Mật khẩu" required=" ">
-                                          <input class="login-form" type="text" placeholder="Nhập lại mật khẩu" required=" ">
-                                          <button class="button-login">Đăng ký</button>
-                                    </div>
-                                    
-                                    <div class="clearfix"> </div>
-                              </div>
-                              
-                        </div>
-                        <!-- //services -->
+<div class="services">
+      <h2>Sign Up</h2>
+      <div class="services-grids">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 login">
+                  <form action="dangky" method="post" id="form_dangky">
+                        <input class="login-form" type="text" id="TenNguoiDung" name="TenNguoiDung" placeholder="Tên đăng nhập" required=" ">
+                        <input class="login-form" type="text" id="Email" name="Email" placeholder="Email của bạn" required=" " >
+                        <input class="login-form" type="text" id="SDT" name="SDT" placeholder="Số điện thoại" required=" " onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                        <input class="login-form" type="password" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" required=" ">
+                        <input class="login-form" type="password" id="NhapLaiMatKhau" name="NhapLaiMatKhau" placeholder="Nhập lại mật khẩu" required=" ">
+                        <button class="button-login" type="button" id="btnDangKy">Đăng ký</button>
+                  </form>
+            </div>
+            
+            <div class="clearfix"> </div>
+      </div>
+      
+</div>
+<!-- //services -->
+
+{{#section 'js'}}
+      <script type="text/javascript">
+            $('#btnDangKy').on('click', function() {
+                var mk = $('#MatKhau').val();
+                var mk_again = $('#NhapLaiMatKhau').val();
+                if(mk === mk_again) {
+                    $('#form_dangky').submit();
+                } else {
+                     alert("Mật khẩu xác nhận không khớp");
+                }
+            });
+      </script>
+{{/section}}

@@ -1,16 +1,30 @@
- <!-- services -->
-                        <div class="services">
-                              <h2>Login</h2>
-                              <div class="services-grids">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6 login">
-                                          <input class="login-form" type="text" placeholder="Tên đăng nhập" required=" ">
-                                          <input class="login-form" type="text" placeholder="Mật khẩu" required=" ">
-                                          <button class="button-login">Đăng nhập</button>
-                                    </div>
-                                    
-                                    <div class="clearfix"> </div>
-                              </div>
-                              
-                        </div>
-                        <!-- //services -->
+{{#if showError}}
+<div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>Title!</strong> {{errorMsg}} ...
+</div>
+{{/if}}
+
+<div class="services">
+      <h2>Login</h2>
+      <div class="services-grids">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 login">
+                  {{#if data.showError}}
+                     <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Title!</strong> {{data.errorMsg}}
+                     </div>
+                  {{/if}}
+
+                   <form action="dangnhap" method="post" id="form_dangnhap">
+                        <input class="login-form" type="text" id="Email" name="Email" placeholder="Email" required=" ">
+                        <input class="login-form" type="text" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" required=" ">
+                        <button class="button-login" type="submit">Đăng nhập</button>
+                  </form>
+            </div>
+            
+            <div class="clearfix"> </div>
+      </div>
+      
+</div>

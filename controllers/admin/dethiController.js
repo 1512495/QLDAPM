@@ -1,5 +1,5 @@
 var express = require("express"),
-  dethiRepo = require("../repos/dethiRepo");
+  dethiRepo = require("../../repos/dethiRepo");
 
 var router = express.Router();
 

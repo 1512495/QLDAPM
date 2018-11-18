@@ -1,6 +1,6 @@
 var express = require("express"),
-  dethiRepo = require('../repos/dethiRepo'),
-  cauhoiRepo = require("../repos/cauhoiRepo");
+  dethiRepo = require('../../repos/dethiRepo'),
+  cauhoiRepo = require("../../repos/cauhoiRepo");
 
 var router = express.Router();
 

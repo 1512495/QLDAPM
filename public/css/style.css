@@ -2522,3 +2522,18 @@ h2.typoh2{
 		margin: 0.5em 0 0;
 	}
 }
+.login-form{
+	width: 100%;
+	border: solid #000 1px;
+	padding: 10px;
+	margin-bottom: 20px;
+	
+}
+.button-login{
+	width: 100%;
+	background-color: #03a9f4;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	
+}

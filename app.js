@@ -4,13 +4,16 @@ var exphbs = require('express-handlebars');
 var exphbs_section = require('express-handlebars-sections');
 var path = require('path');
 
-var ykienController = require('./controllers/ykienController');
-var cauHoiController = require('./controllers/cauhoiController');
-var dethiController = require('./controllers/dethiController');
-var dapanController = require('./controllers/dapanController');
-var bailamController = require('./controllers/bailamController');
-var nguoidungController = require('./controllers/nguoidungController');
+//Admin controller
+var ykienController = require('./controllers/admin/ykienController');
+var cauHoiController = require('./controllers/admin/cauhoiController');
+var dethiController = require('./controllers/admin/dethiController');
+var dapanController = require('./controllers/admin/dapanController');
+var bailamController = require('./controllers/admin/bailamController');
+var nguoidungController = require('./controllers/admin/nguoidungController');
 
+var nguoidungRepo = require('./repos/nguoidungRepo');
+var dethiRepo = require('./repos/dethiRepo');
 
 var app = express();
 app.engine('hbs', exphbs({
@@ -53,7 +56,12 @@ app.get('/baihoc', (req, res) => {
 });
 
 app.get('/dethi', (req, res) => {
-    res.render('client/danhsachdethi');
+    dethiRepo.loadAll().then(rows => {
+        var vm = {
+            dethis: rows
+        };
+        res.render("client/danhsachdethi", vm );
+      });
 });
 
 app.get('/gioithieu', (req, res) => {
@@ -67,9 +75,32 @@ app.get('/lienhe', (req, res) => {
 app.get('/dangky', (req, res) => {
     res.render('client/signup');
 });
+app.post('/dangky', (req, res) => {
+    nguoidungRepo.add(req.body).then(value => {
+        res.redirect("/dangnhap");
+    });
+});
 
 app.get('/dangnhap', (req, res) => {
     res.render('client/login');
+});
+app.post('/dangnhap', (req, res) => {
+    nguoidungRepo.dangNhap(req.body).then(rows => {
+        if (rows.length > 0) {
+            //req.session.isLogged = true;
+            //req.session.curUser = rows[0];
+            res.redirect("/");
+        } else {
+            var vm = {
+                showError: true,
+                errorMsg: "Login failed"
+            };
+            res.render("client/login", {
+                data: vm,
+                layout: false
+            });
+        }
+    })
 });
 
 app.listen(3000, () => {

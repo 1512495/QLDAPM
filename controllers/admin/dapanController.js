@@ -1,5 +1,5 @@
 var express = require("express"),
-  dapanRepo = require("../repos/dapanRepo");
+  dapanRepo = require("../../repos/dapanRepo");
 
 var router = express.Router();
 

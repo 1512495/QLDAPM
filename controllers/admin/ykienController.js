@@ -1,6 +1,5 @@
 var express = require('express');
-var ykienRepo = require('../repos/ykienRepo');
-var config = require('../config/config')
+var ykienRepo = require('../../repos/ykienRepo');
 var moment = require('moment');
 var multer = require('multer')
 var router = express.Router();

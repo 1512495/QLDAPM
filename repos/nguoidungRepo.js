@@ -1,5 +1,7 @@
 var db = require('../fn/db');
 var config = require('../config/config');
+var md5 = require('md5');
+
 exports.loadAll = () => {
     var sql = 'select * from nguoidung';
     return db.load(sql);
@@ -19,8 +21,9 @@ exports.detail = (id) => {
     });
 
 }
-exports.loadAllPage = (offset) => {
-    var sql = `select * from nguoidung limit ${config.QUESTIONS_PER_PAGE} offset ${offset}`;
+exports.dangNhap = (user) => {
+    var matkhau = md5(user.MatKhau);
+    var sql = `select * from nguoidung where Email = '${user.Email}' and MatKhau = '${matkhau}'`;
     return db.load(sql);
 }
 exports.countAll = () => {
@@ -28,9 +31,11 @@ exports.countAll = () => {
     return db.save(sql);
 }
 exports.add = (user) => {
-    var sql = `insert into nguoidung(TenNguoiDung, Email, MatKhau, SDT, GioiTinh) values('${user.TenNguoiDung}', '${user.Email}', '${user.MatKhau}', '${user.SDT}', '${user.GioiTinh}')`;
+    var matkhau = md5(user.MatKhau);
+    var sql = `insert into nguoidung(TenNguoiDung, Email, MatKhau, SDT) values('${user.TenNguoiDung}', '${user.Email}', '${matkhau}', '${user.SDT}')`;
     return db.save(sql);
 }
+
 exports.delete = (id) => {
     var sql = `DELETE from nguoidung where MaNguoiDung= ${id}`;
     return db.save(sql)

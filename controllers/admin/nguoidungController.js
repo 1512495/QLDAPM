@@ -1,5 +1,5 @@
 var express = require("express"),
-    nguoidungRepo = require("../repos/nguoidungRepo");
+    nguoidungRepo = require("../../repos/nguoidungRepo");
 
 var router = express.Router();
 
