@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 18, 2018 at 04:47 PM
+-- Generation Time: Nov 19, 2018 at 05:08 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -25,6 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `baihoc`
+--
+
+DROP TABLE IF EXISTS `baihoc`;
+CREATE TABLE IF NOT EXISTS `baihoc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `TieuDe` varchar(200) NOT NULL,
+  `TomTat` varchar(500) NOT NULL,
+  `NoiDung` varchar(5000) NOT NULL,
+  `HinhAnh` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cauhoi`
 --
 
@@ -35,48 +51,30 @@ CREATE TABLE IF NOT EXISTS `cauhoi` (
   `NoiDung` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `HinhMinhHoa` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `MaMonHoc` int(11) NOT NULL,
+  `A` varchar(300) NOT NULL,
+  `B` varchar(300) NOT NULL,
+  `C` varchar(300) NOT NULL,
+  `D` varchar(300) NOT NULL,
   `NgayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `DapAnDung` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`MaCauHoi`),
   KEY `MaDeThi` (`MaDeThi`),
   KEY `MaMonHoc` (`MaMonHoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cauhoi`
 --
 
-INSERT INTO `cauhoi` (`MaCauHoi`, `MaDeThi`, `NoiDung`, `HinhMinhHoa`, `MaMonHoc`, `NgayTao`, `DapAnDung`) VALUES
-(5, 1, 'Ai là tác giả truyện Lượm', NULL, 2, '2018-11-07 13:36:45', 'A'),
-(6, 1, 'Ai phát minh định lý Viet', NULL, 1, '2018-11-07 13:36:45', ''),
-(7, 1, 'Tam giác vuông có 2 cạnh vuông là 3 và 4.Hỏi cạnh huyền là bao nhiu', NULL, 1, '2018-11-07 13:38:52', 'C'),
-(8, 1, 'What biggest country in the world?', NULL, 3, '2018-11-07 13:38:52', 'B');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dapan`
---
-
-DROP TABLE IF EXISTS `dapan`;
-CREATE TABLE IF NOT EXISTS `dapan` (
-  `MaDapAn` int(11) NOT NULL AUTO_INCREMENT,
-  `MaCauHoi` int(11) NOT NULL,
-  `A` varchar(1000) NOT NULL,
-  `B` varchar(1000) NOT NULL,
-  `C` varchar(1000) NOT NULL,
-  `D` varchar(1000) NOT NULL,
-  PRIMARY KEY (`MaDapAn`),
-  KEY `MaCauHoi` (`MaCauHoi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `dapan`
---
-
-INSERT INTO `dapan` (`MaDapAn`, `MaCauHoi`, `A`, `B`, `C`, `D`) VALUES
-(1, 5, 'Tố Hữu', 'Đỗ Phủ', 'Lý Bạch', 'Kim Đồng'),
-(2, 6, 'Newtonss', 'Pytago', 'Enstein', 'Viet');
+INSERT INTO `cauhoi` (`MaCauHoi`, `MaDeThi`, `NoiDung`, `HinhMinhHoa`, `MaMonHoc`, `A`, `B`, `C`, `D`, `NgayTao`, `DapAnDung`) VALUES
+(5, 1, 'Ai là tác giả truyện Lượm', NULL, 2, 'Đỗ Phủ', 'Lý Bạch', 'Tố Hữu', 'Chu Đăng Khoa', '2018-11-07 13:36:45', 'Tố Hữu'),
+(6, 1, 'Ai phát minh định lý Viet', NULL, 1, 'Newton', 'Viet', 'Pytago', 'Enstein', '2018-11-07 13:36:45', 'Viet'),
+(7, 1, 'Tam giác vuông có 2 cạnh vuông là 3 và 4.Hỏi cạnh huyền là bao nhiu', NULL, 1, '1', '5', '7', '12', '2018-11-07 13:38:52', '5'),
+(8, 1, 'What is the biggest country in the world?', NULL, 3, 'Russia', 'Canada', 'USA', 'China', '2018-11-07 13:38:52', 'Russia'),
+(9, 2, 'Khi tăng chiều rộng của 1 hình chữ nhật lên 10% thì chu vi sẽ tăng thêm', NULL, 1, '10%', '20%', '100%', 'Cả A và C đều sau', '2018-11-19 16:08:09', '20%'),
+(10, 2, 'Muốn nhân 1 số với 0.05, ta chia số đó cho ... rồi dịch dấu phẩy sang trái...chữ số', NULL, 1, '2, 1', '20, 1', '20, 2', '10, 2', '2018-11-19 16:10:03', '20, 2'),
+(11, 2, 'Khi chiều dài HCN giảm đi 20cm, chu vi sẽ giảm', NULL, 1, '20cm', '40cm', '60cm', '80cm', '2018-11-19 16:14:02', '40cm'),
+(12, 2, 'Khi chiều dài HCN giảm đi 20cm, diện tích sẽ giảm', NULL, 1, '20 cm2', '40 cm2', '60 cm2', 'Cả A và B đều sai', '2018-11-19 16:14:02', 'Cả A và B đều sai');
 
 -- --------------------------------------------------------
 
@@ -209,12 +207,6 @@ INSERT INTO `ykiennguoidung` (`MaYKien`, `MaNguoiDung`, `NoiDung`, `NgayGoi`) VA
 ALTER TABLE `cauhoi`
   ADD CONSTRAINT `cauhoi_ibfk_1` FOREIGN KEY (`MaDeThi`) REFERENCES `dethi` (`MaDeThi`),
   ADD CONSTRAINT `cauhoi_ibfk_2` FOREIGN KEY (`MaMonHoc`) REFERENCES `monhoc` (`MaMonHoc`);
-
---
--- Constraints for table `dapan`
---
-ALTER TABLE `dapan`
-  ADD CONSTRAINT `dapan_ibfk_1` FOREIGN KEY (`MaCauHoi`) REFERENCES `cauhoi` (`MaCauHoi`);
 
 --
 -- Constraints for table `thongtinbailam`

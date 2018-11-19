@@ -11,6 +11,11 @@ exports.single = id => {
     return db.load(sql);
 }
 
+exports.loadDeThi = id => {
+    var sql = `select * from cauhoi where MaDeThi = ${id}`;
+    return db.load(sql);
+}
+
 exports.add = (question) => {
     var sql = `insert into cauhoi(MaDeThi, NoiDung, HinhMinhHoa, MaMonHoc, DapAnDung) values('${question.MaDeThi}','${question.NoiDung}', '${question.HinhMinhHoa}', '${question.MaMonHoc}', '${question.DapAnDung}')`;
     return db.save(sql);

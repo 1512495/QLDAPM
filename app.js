@@ -12,8 +12,11 @@ var dapanController = require('./controllers/admin/dapanController');
 var bailamController = require('./controllers/admin/bailamController');
 var nguoidungController = require('./controllers/admin/nguoidungController');
 
+//Client controller
+var dethiCtrlClient = require('./controllers/client/dethiController');
+
 var nguoidungRepo = require('./repos/nguoidungRepo');
-var dethiRepo = require('./repos/dethiRepo');
+
 
 var app = express();
 app.engine('hbs', exphbs({
@@ -55,14 +58,8 @@ app.get('/baihoc', (req, res) => {
     res.render('client/danhsachbaihoc');
 });
 
-app.get('/dethi', (req, res) => {
-    dethiRepo.loadAll().then(rows => {
-        var vm = {
-            dethis: rows
-        };
-        res.render("client/danhsachdethi", vm );
-      });
-});
+app.use('/dethi', dethiCtrlClient);
+
 
 app.get('/gioithieu', (req, res) => {
     res.render('client/gioithieu');
