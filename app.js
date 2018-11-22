@@ -15,11 +15,8 @@ var nguoidungController = require('./controllers/admin/nguoidungController');
 
 //Client controller
 var dethiCtrlClient = require('./controllers/client/dethiController');
-<<<<<<< HEAD
 var lienheController = require('./controllers/client/lienheController');
-=======
 var baihocCtrlClient = require('./controllers/client/baihocController');
->>>>>>> c84fdc1992d1807fb184ef5d7060c49a85b53876
 var nguoidungRepo = require('./repos/nguoidungRepo');
 
 

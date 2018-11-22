@@ -28,26 +28,17 @@ use luyenthilop6;
 -- Table structure for table `baihoc`
 --
 
-<<<<<<< HEAD
-CREATE TABLE `baihoc` (
-  `id` int(11) NOT NULL,
-=======
 
 DROP TABLE IF EXISTS `baihoc`;
 CREATE TABLE IF NOT EXISTS `baihoc` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
->>>>>>> c84fdc1992d1807fb184ef5d7060c49a85b53876
   `TieuDe` varchar(200) NOT NULL,
   `TomTat` varchar(500) NOT NULL,
   `ChiTiet` varchar(5000) NOT NULL,
   `NoiDung` varchar(5000) NOT NULL,
-<<<<<<< HEAD
-  `HinhAnh` varchar(200) DEFAULT NULL
-=======
   `HinhAnh` varchar(200) DEFAULT NULL,
   
   PRIMARY KEY (`id`)
->>>>>>> c84fdc1992d1807fb184ef5d7060c49a85b53876
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
