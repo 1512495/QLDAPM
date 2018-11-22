@@ -14,7 +14,7 @@ var nguoidungController = require('./controllers/admin/nguoidungController');
 
 //Client controller
 var dethiCtrlClient = require('./controllers/client/dethiController');
-
+var baihocCtrlClient = require('./controllers/client/baihocController');
 var nguoidungRepo = require('./repos/nguoidungRepo');
 
 
@@ -54,10 +54,10 @@ app.use('/admin/nguoidung', nguoidungController);
 
 
 //client page
-app.get('/baihoc', (req, res) => {
-    res.render('client/danhsachbaihoc');
-});
-
+// app.get('/baihoc', (req, res) => {
+//     res.render('client/danhsachbaihoc');
+// });
+app.use('/baihoc', baihocCtrlClient);
 app.use('/dethi', dethiCtrlClient);
 
 

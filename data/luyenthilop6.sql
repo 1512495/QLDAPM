@@ -11,7 +11,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
+create database luyenthilop6;
+use luyenthilop6;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,25 +21,38 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `luyenthilop6`
---
-
+-- drop database luyenthilop6
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `baihoc`
 --
 
+
 DROP TABLE IF EXISTS `baihoc`;
 CREATE TABLE IF NOT EXISTS `baihoc` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `TieuDe` varchar(200) NOT NULL,
   `TomTat` varchar(500) NOT NULL,
+  `ChiTiet` varchar(5000) NOT NULL,
   `NoiDung` varchar(5000) NOT NULL,
   `HinhAnh` varchar(200) DEFAULT NULL,
+  
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+INSERT INTO `baihoc` (`id`, `TieuDe`, `TomTat`,`ChiTiet`,`NoiDung`,`HinhAnh`) value
+(1,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','Chưa có dữ liệu','abcd','1.jpg'),
+(2,'Bài học vận tốc, quãng đường, thời gian - môn Toán','Các tính quãng đường, vận tốc, thời gian','chưa có dữ liệu','abcd','2.jpg'),
+(3,'Bài học đơn vị đo độ dài - môn Toán','Cung cấp kiến thức về độ dài: mm, cm, dm, m, km','chưa có dữ liệu','abcd','3.png'),
+(4,'Bài học Việt Nam-Tổ quốc em - môn Tiếng việt','Phân tích về chủ đề đất nước','chưa có dữ liệu','abcd','4.png'),
+(5,'Bài học Cánh chim hòa bình - môn Tiếng việt','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','5.jpg'),
+(6,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','6.jpg'),
+(7,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','7.jpg'),
+(8,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','8.jpg'),
+(9,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','9.jpg');
+
 
 --
 -- Table structure for table `cauhoi`
