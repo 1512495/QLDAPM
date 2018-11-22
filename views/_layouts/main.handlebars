@@ -51,6 +51,19 @@
         <div class="container">
             <div class="body-content1">
             <!-- header -->
+            <div style="margin-left: 70%">
+                <span id="username">
+                </span>
+                <span id="signin">
+                    <a href="/dangnhap">Đăng nhập</a>  |
+                </span>
+                <span id="signup">
+                    <a href="/dangky">Đăng kí</a>
+                </span>
+                <span id="signout">
+                    <a href="#">Đăng xuất</a>
+                </span>
+            </div>
                 <div class="logo-search">
                     <div class="logo">
                         <h1><a href="/">N<span class="color">h</span><span class="color1">ó</span><span class="color2">m</span> <span>5</span> <i>Luyện thi vào lớp 6</i></a></h1>
@@ -86,9 +99,8 @@
                                     <li><a href="/dethi" class="hvr-rectangle-out">Luyện thi</a></li>
                                     <li><a href="/gioithieu" class="hvr-rectangle-out">Giới thiệu</a></li>
                                     <li><a href="/lienhe" class="hvr-rectangle-out">Liên hệ</a></li>
-                                    <li><a href="/dangky" class="hvr-rectangle-out">Đăng ký</a></li>
-                                    <li><a href="/dangnhap" class="hvr-rectangle-out">Đăng nhập</a></li>
-
+                                    {{!-- <li><a href="/dangky" class="hvr-rectangle-out">Đăng ký</a></li>
+                                    <li><a href="/dangnhap" class="hvr-rectangle-out">Đăng nhập</a></li> --}}
                                 </ul>
                             </nav>
                         </div>
@@ -177,12 +189,27 @@
 <!-- //footer -->
 <!-- here stars scrolling icon -->
     <script type="text/javascript">
-                                    $(document).ready(function() {
-                                       
-                                        
-                                        $().UItoTop({ easingType: 'easeOutQuart' });
-                                        
-                                    });
+        $(document).ready(function() {
+            
+            
+            $().UItoTop({ easingType: 'easeOutQuart' });
+            
+        });
+        let username = localStorage.getItem("username");
+        if(username){
+            $("#signup").hide();
+            $("#signin").hide();
+            $("#username").html(username + "    | ");
+            $("#signout").show();
+        } else{
+            $("#signup").show();
+            $("#signin").show();
+            $("#username").hide();
+            $("#signout").hide();
+        }
+        $("#signout").click(()=>{
+            localStorage.clear();
+        });
     </script>
 <!-- //here ends scrolling icon -->
 <!-- for bootstrap working -->
