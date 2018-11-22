@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 19, 2018 at 05:08 PM
--- Server version: 5.7.21
--- PHP Version: 7.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Nov 22, 2018 at 05:50 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,14 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `baihoc`
 --
 
-DROP TABLE IF EXISTS `baihoc`;
-CREATE TABLE IF NOT EXISTS `baihoc` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `baihoc` (
+  `id` int(11) NOT NULL,
   `TieuDe` varchar(200) NOT NULL,
   `TomTat` varchar(500) NOT NULL,
   `NoiDung` varchar(5000) NOT NULL,
-  `HinhAnh` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `HinhAnh` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -44,9 +42,8 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
 -- Table structure for table `cauhoi`
 --
 
-DROP TABLE IF EXISTS `cauhoi`;
-CREATE TABLE IF NOT EXISTS `cauhoi` (
-  `MaCauHoi` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cauhoi` (
+  `MaCauHoi` int(11) NOT NULL,
   `MaDeThi` int(11) NOT NULL,
   `NoiDung` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `HinhMinhHoa` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -56,11 +53,8 @@ CREATE TABLE IF NOT EXISTS `cauhoi` (
   `C` varchar(300) NOT NULL,
   `D` varchar(300) NOT NULL,
   `NgayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `DapAnDung` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`MaCauHoi`),
-  KEY `MaDeThi` (`MaDeThi`),
-  KEY `MaMonHoc` (`MaMonHoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `DapAnDung` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cauhoi`
@@ -82,16 +76,14 @@ INSERT INTO `cauhoi` (`MaCauHoi`, `MaDeThi`, `NoiDung`, `HinhMinhHoa`, `MaMonHoc
 -- Table structure for table `dethi`
 --
 
-DROP TABLE IF EXISTS `dethi`;
-CREATE TABLE IF NOT EXISTS `dethi` (
-  `MaDeThi` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dethi` (
+  `MaDeThi` int(11) NOT NULL,
   `TenDeThi` varchar(300) NOT NULL,
   `ThoiGian` int(11) NOT NULL,
   `SoCau` int(11) NOT NULL,
   `SoDiemMotCau` int(11) NOT NULL,
-  `NgayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`MaDeThi`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `NgayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dethi`
@@ -111,12 +103,10 @@ INSERT INTO `dethi` (`MaDeThi`, `TenDeThi`, `ThoiGian`, `SoCau`, `SoDiemMotCau`,
 -- Table structure for table `monhoc`
 --
 
-DROP TABLE IF EXISTS `monhoc`;
-CREATE TABLE IF NOT EXISTS `monhoc` (
-  `MaMonHoc` int(11) NOT NULL AUTO_INCREMENT,
-  `TenMonHoc` varchar(100) NOT NULL,
-  PRIMARY KEY (`MaMonHoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `monhoc` (
+  `MaMonHoc` int(11) NOT NULL,
+  `TenMonHoc` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `monhoc`
@@ -133,15 +123,13 @@ INSERT INTO `monhoc` (`MaMonHoc`, `TenMonHoc`) VALUES
 -- Table structure for table `nguoidung`
 --
 
-DROP TABLE IF EXISTS `nguoidung`;
-CREATE TABLE IF NOT EXISTS `nguoidung` (
-  `MaNguoiDung` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `nguoidung` (
+  `MaNguoiDung` int(11) NOT NULL,
   `TenNguoiDung` varchar(100) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `MatKhau` varchar(50) NOT NULL,
-  `SDT` varchar(20) NOT NULL,
-  PRIMARY KEY (`MaNguoiDung`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `SDT` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nguoidung`
@@ -153,7 +141,8 @@ INSERT INTO `nguoidung` (`MaNguoiDung`, `TenNguoiDung`, `Email`, `MatKhau`, `SDT
 (3, 'Phan Văn Tấn', 'tanphan0805@gmail.com', 'tanphan0805', '08732409328'),
 (4, 'Teo', 'teo123@gmail.com', '1', '0347'),
 (5, 'Xuân Sơn', 'xuan97@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '3465821'),
-(6, 'Teo a', 'xuan97@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '324234');
+(6, 'Teo a', 'xuan97@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '324234'),
+(7, 'aa', 'aa', 'd41d8cd98f00b204e9800998ecf8427e', '');
 
 -- --------------------------------------------------------
 
@@ -161,18 +150,36 @@ INSERT INTO `nguoidung` (`MaNguoiDung`, `TenNguoiDung`, `Email`, `MatKhau`, `SDT
 -- Table structure for table `thongtinbailam`
 --
 
-DROP TABLE IF EXISTS `thongtinbailam`;
-CREATE TABLE IF NOT EXISTS `thongtinbailam` (
-  `MaBaiLam` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `thongtinbailam` (
+  `MaBaiLam` int(11) NOT NULL,
   `MaDeThi` int(11) NOT NULL,
   `MaNguoiDung` int(11) NOT NULL,
   `NgayThi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `SoCauLam` int(11) NOT NULL,
-  `SoCauDung` int(11) NOT NULL,
-  PRIMARY KEY (`MaBaiLam`),
-  KEY `MaDeThi` (`MaDeThi`,`MaNguoiDung`),
-  KEY `MaNguoiDung` (`MaNguoiDung`)
+  `SoCauDung` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thongtinlienhe`
+--
+
+CREATE TABLE `thongtinlienhe` (
+  `MaLienHe` int(11) NOT NULL,
+  `Name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Subject` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Message` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `thongtinlienhe`
+--
+
+INSERT INTO `thongtinlienhe` (`MaLienHe`, `Name`, `Email`, `Subject`, `Message`) VALUES
+(1, '1', '1@1', '111', '111'),
+(2, '2', '2@2', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -180,15 +187,12 @@ CREATE TABLE IF NOT EXISTS `thongtinbailam` (
 -- Table structure for table `ykiennguoidung`
 --
 
-DROP TABLE IF EXISTS `ykiennguoidung`;
-CREATE TABLE IF NOT EXISTS `ykiennguoidung` (
-  `MaYKien` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ykiennguoidung` (
+  `MaYKien` int(11) NOT NULL,
   `MaNguoiDung` int(11) NOT NULL,
   `NoiDung` varchar(1000) NOT NULL,
-  `NgayGoi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`MaYKien`),
-  KEY `fk_yknd_nd` (`MaNguoiDung`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `NgayGoi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ykiennguoidung`
@@ -196,6 +200,115 @@ CREATE TABLE IF NOT EXISTS `ykiennguoidung` (
 
 INSERT INTO `ykiennguoidung` (`MaYKien`, `MaNguoiDung`, `NoiDung`, `NgayGoi`) VALUES
 (3, 1, 'Rất hay', '2018-11-07 13:45:31');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `baihoc`
+--
+ALTER TABLE `baihoc`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cauhoi`
+--
+ALTER TABLE `cauhoi`
+  ADD PRIMARY KEY (`MaCauHoi`),
+  ADD KEY `MaDeThi` (`MaDeThi`),
+  ADD KEY `MaMonHoc` (`MaMonHoc`);
+
+--
+-- Indexes for table `dethi`
+--
+ALTER TABLE `dethi`
+  ADD PRIMARY KEY (`MaDeThi`);
+
+--
+-- Indexes for table `monhoc`
+--
+ALTER TABLE `monhoc`
+  ADD PRIMARY KEY (`MaMonHoc`);
+
+--
+-- Indexes for table `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  ADD PRIMARY KEY (`MaNguoiDung`);
+
+--
+-- Indexes for table `thongtinbailam`
+--
+ALTER TABLE `thongtinbailam`
+  ADD PRIMARY KEY (`MaBaiLam`),
+  ADD KEY `MaDeThi` (`MaDeThi`,`MaNguoiDung`),
+  ADD KEY `MaNguoiDung` (`MaNguoiDung`);
+
+--
+-- Indexes for table `thongtinlienhe`
+--
+ALTER TABLE `thongtinlienhe`
+  ADD PRIMARY KEY (`MaLienHe`);
+
+--
+-- Indexes for table `ykiennguoidung`
+--
+ALTER TABLE `ykiennguoidung`
+  ADD PRIMARY KEY (`MaYKien`),
+  ADD KEY `fk_yknd_nd` (`MaNguoiDung`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `baihoc`
+--
+ALTER TABLE `baihoc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cauhoi`
+--
+ALTER TABLE `cauhoi`
+  MODIFY `MaCauHoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `dethi`
+--
+ALTER TABLE `dethi`
+  MODIFY `MaDeThi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `monhoc`
+--
+ALTER TABLE `monhoc`
+  MODIFY `MaMonHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `nguoidung`
+--
+ALTER TABLE `nguoidung`
+  MODIFY `MaNguoiDung` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `thongtinbailam`
+--
+ALTER TABLE `thongtinbailam`
+  MODIFY `MaBaiLam` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `thongtinlienhe`
+--
+ALTER TABLE `thongtinlienhe`
+  MODIFY `MaLienHe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `ykiennguoidung`
+--
+ALTER TABLE `ykiennguoidung`
+  MODIFY `MaYKien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

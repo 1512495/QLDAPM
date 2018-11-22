@@ -12,9 +12,10 @@ var dapanController = require('./controllers/admin/dapanController');
 var bailamController = require('./controllers/admin/bailamController');
 var nguoidungController = require('./controllers/admin/nguoidungController');
 
+
 //Client controller
 var dethiCtrlClient = require('./controllers/client/dethiController');
-
+var lienheController = require('./controllers/client/lienheController');
 var nguoidungRepo = require('./repos/nguoidungRepo');
 
 
@@ -52,14 +53,13 @@ app.use('/admin/dapan', dapanController);
 app.use('/admin/bailam', bailamController);
 app.use('/admin/nguoidung', nguoidungController);
 
-
 //client page
 app.get('/baihoc', (req, res) => {
     res.render('client/danhsachbaihoc');
 });
 
 app.use('/dethi', dethiCtrlClient);
-
+app.use('/lienhe', lienheController);
 
 app.get('/gioithieu', (req, res) => {
     res.render('client/gioithieu');
