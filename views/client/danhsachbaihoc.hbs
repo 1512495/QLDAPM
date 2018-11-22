@@ -1,45 +1,61 @@
-
+{{#section 'css'}}
+     <style type="text/css" media="screen">
+      	.kt_content_item {
+		    border-bottom: 1px dotted #cecece;
+		    display: inline-block;
+		    text-align: left;
+		    width: 100%;
+		    padding: 20px 0;
+		}
+		.img_kt._month8 {
+		    background: rgba(0, 0, 0, 0) url(../image/banner/img_kt_thang_8.png) no-repeat scroll left center;
+		}
+		.kt_content_item ._right {
+		    display: inline-block;
+		    margin-top: 25px;
+		    vertical-align: top;
+		    width: 530px;
+		}
+		.ml-30{
+			margin-left: 30px;
+		}
+		.ml-20{
+			margin-left: 20px;
+		}
+		a {
+		    text-decoration: none;
+		    color: #474747;
+		    padding: 0;
+		    margin: 0;
+		}
+     </style>
+{{/section}}
+	<!-- services -->
 <div class="services">
-	<h2>Danh sách bài học</h2>
+	<h2>Danh sách bài học luyện thi</h2>
 	
 	<div class="services-grids1">
-		<div class="col-md-3 services-grids1-grid">
-			<img src="images/8.jpg" alt=" " class="img-responsive" />
-			<h4><a href="single.html">Bài 1</a></h4>
-			<p>Tóm tắt</p>
-			<div class="more">
-				<a href="single.html" class="hvr-rectangle-out">Xem</a>
-			</div>
-		</div>
-		<div class="col-md-3 services-grids1-grid">
-			<img src="images/9.jpg" alt=" " class="img-responsive" />
-			<h4><a href="single.html">Bài 2</a></h4>
-			<p>Tóm tắt</p>
-			<div class="more">
-				<a href="single.html" class="hvr-rectangle-out">Xem</a>
-			</div>
-		</div>
-		<div class="col-md-3 services-grids1-grid">
-			<img src="images/10.jpg" alt=" " class="img-responsive" />
-			<h4><a href="single.html">Bài 3</a></h4>
-			<p>Tóm tắt</p>
-			<div class="more">
-				<a href="single.html" class="hvr-rectangle-out">Xem</a>
-			</div>
-		</div>
-		<div class="col-md-3 services-grids1-grid">
-			<img src="images/11.jpg" alt=" " class="img-responsive" />
-			<h4><a href="single.html">Bài 4</a></h4>
-			<p>
-				Tóm tắt
-			</p>
-			<div class="more">
-				<a href="single.html" class="hvr-rectangle-out">Xem</a>
-			</div>
-		</div>
+		{{#each baihoc}}
+			 <div class="kt_content_item ml-20">
+	            <img width="100px" height="100px" src="/images/{{HinhAnh}}">
+	            <div class="_right ml-30">
+	                <a href="/baihoc/chitiet/{{id}}">
+	                    <div>
+	                        <h4 class="_title">
+	                            {{TieuDe}}
+	                        </h4>
+	                    </div>
+	                </a>
+	                <div style="color:#888888;font-size: 14px;">{{TomTat}}</div>
+	            </div>
+	        </div>
+        {{/each}}
+
+		
 		<div class="clearfix"> </div>
 	</div>
 </div>
+	<!-- //services -->
 
 <nav style="text-align:center">
 	<ul class="pagination">
