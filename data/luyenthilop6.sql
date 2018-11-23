@@ -224,8 +224,6 @@ INSERT INTO `ykiennguoidung` (`MaYKien`, `MaNguoiDung`, `NoiDung`, `NgayGoi`) VA
 --
 -- Indexes for table `baihoc`
 --
-ALTER TABLE `baihoc`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cauhoi`
