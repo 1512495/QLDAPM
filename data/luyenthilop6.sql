@@ -84,7 +84,19 @@ INSERT INTO `cauhoi` (`MaCauHoi`, `MaDeThi`, `NoiDung`, `HinhMinhHoa`, `MaMonHoc
 (9, 2, 'Khi tăng chiều rộng của 1 hình chữ nhật lên 10% thì chu vi sẽ tăng thêm', NULL, 1, '10%', '20%', '100%', 'Cả A và C đều sau', '2018-11-19 16:08:09', '20%'),
 (10, 2, 'Muốn nhân 1 số với 0.05, ta chia số đó cho ... rồi dịch dấu phẩy sang trái...chữ số', NULL, 1, '2, 1', '20, 1', '20, 2', '10, 2', '2018-11-19 16:10:03', '20, 2'),
 (11, 2, 'Khi chiều dài HCN giảm đi 20cm, chu vi sẽ giảm', NULL, 1, '20cm', '40cm', '60cm', '80cm', '2018-11-19 16:14:02', '40cm'),
-(12, 2, 'Khi chiều dài HCN giảm đi 20cm, diện tích sẽ giảm', NULL, 1, '20 cm2', '40 cm2', '60 cm2', 'Cả A và B đều sai', '2018-11-19 16:14:02', 'Cả A và B đều sai');
+(12, 2, 'Khi chiều dài HCN giảm đi 20cm, diện tích sẽ giảm', NULL, 1, '20 cm2', '40 cm2', '60 cm2', 'Cả A và B đều sai', '2018-11-19 16:14:02', 'Cả A và B đều sai'),
+(13, 3, 'Số các số tự nhiên có 4 chữ số là:', NULL, 1, '8999 số', '9000 số', '9800 số', 'Một kết quả khác', '2018-12-07 18:16:16', '9000 số'),
+(14, 3, 'Cho các đoạn thẳng AB, CD, EF. Cho biết CD = 7 cm, EF = 5 cm, số đo độ dài AB là số tự nhiên, AB < CD, AB > EF. Vậy AB = ?', NULL, 1, '8 cm', '6 cm', '4 cm', '12 cm', '2018-12-07 18:18:47', '6 cm'),
+(15, 3, 'Tìm câu trả lời sai:\r\nCho điểm A nằm giữa hai điểm B và C, điểm M nằm giữa hai điểm A và B, điểm N nằm giữa hai điểm A và C. Ta có:', NULL, 1, 'Hai tia AM và AB trùng nhau', 'Hai tia AN và AC trùng nhau.', 'A nằm giữa hai điểm M và N', 'M nằm giữa hai điểm A và N', '2018-12-07 18:21:52', 'M nằm giữa hai điểm A và N'),
+(16, 5, 'Khi 2 điểm M và N trùng nhau, ta nói khoảng cách giữa M và N bằng:', NULL, 1, '0', '1', '-2', '3', '2018-12-07 18:24:04', '0'),
+(17, 5, 'Trên tia Ox, hãy vẽ hai đoạn thẳng OM và ON biết OM = 3 cm và ON = 5 cm. Trong 3 điểm O, M, N, điểm nằm giữa hai điểm còn lại là:', NULL, 1, 'O', 'M', 'N', 'Không có điểm nào', '2018-12-07 18:25:05', 'M'),
+(18, 5, 'Cho 10 điểm. Cứ qua hai điểm vẽ một đoạn thẳng. Số đoạn thẳng vẽ được tất cả là:', NULL, 1, '5', '11', '20', '45', '2018-12-07 18:27:07', '45'),
+(19, 6, 'Cho 2 tia Ox và Oy đối nhau, các điểm H, K thuộc tia Ox (K nằm giữa O và H), điểm G thuộc tia Oy. Tia đối của tia OG là:', NULL, 1, 'Tia OK hoặc tia OH hoặc tia Ox', 'Tia Oy', 'Tia Kx', 'Tia Hx', '2018-12-07 18:29:28', 'Tia OK hoặc tia OH hoặc tia Ox'),
+(20, 6, 'Nếu (- 16) . x = - 112 thì giá trị của x là:', NULL, 1, '7', '-7', '116', '-116', '2018-12-07 18:30:31', '7'),
+(21, 6, 'Chọn câu trả lời đúng:', NULL, 1, '- 365 . 366 < 1', '- 365 . 366 = 1', '- 365 . 366 = - 1', '- 365 . 366 > 1', '2018-12-07 18:31:58', '- 365 . 366 < 1'),
+(22, 7, 'Cho x thuộc Z và - 7 < x < 8.  Tổng các số nguyên x bằng:', NULL, 1, '0', '-7', '-6', '7', '2018-12-07 18:33:52', '7'),
+(23, 7, 'Tìm x, biết IxI + 5 = 4.', NULL, 1, '-1', '-9', ' x = - 1 hoặc x = - 9', 'x thuộc Ø', '2018-12-07 18:35:13', 'x thuộc Ø'),
+(24, 7, 'Các số có hai chữ số là bình phương của một số nguyên tố là:', NULL, 1, '25; 49', '25; 81; 62', '49; 74', '25; 22', '2018-12-07 18:36:18', '25; 49');
 
 -- --------------------------------------------------------
 
