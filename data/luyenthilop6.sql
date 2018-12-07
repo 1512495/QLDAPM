@@ -37,21 +37,21 @@ CREATE TABLE IF NOT EXISTS `baihoc` (
   `ChiTiet` varchar(5000) NOT NULL,
   `NoiDung` varchar(5000) NOT NULL,
   `HinhAnh` varchar(200) DEFAULT NULL,
-  
+  `MaMonHoc` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-INSERT INTO `baihoc` (`id`, `TieuDe`, `TomTat`,`ChiTiet`,`NoiDung`,`HinhAnh`) value
-(1,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','Chưa có dữ liệu','abcd','1.jpg'),
-(2,'Bài học vận tốc, quãng đường, thời gian - môn Toán','Các tính quãng đường, vận tốc, thời gian','chưa có dữ liệu','abcd','2.jpg'),
-(3,'Bài học đơn vị đo độ dài - môn Toán','Cung cấp kiến thức về độ dài: mm, cm, dm, m, km','chưa có dữ liệu','abcd','3.png'),
-(4,'Bài học Việt Nam-Tổ quốc em - môn Tiếng việt','Phân tích về chủ đề đất nước','chưa có dữ liệu','abcd','4.png'),
-(5,'Bài học Cánh chim hòa bình - môn Tiếng việt','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','5.jpg'),
-(6,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','6.jpg'),
-(7,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','7.jpg'),
-(8,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','8.jpg'),
-(9,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','9.jpg');
+INSERT INTO `baihoc` (`id`, `TieuDe`, `TomTat`,`ChiTiet`,`NoiDung`,`HinhAnh`,`MaMonHoc`) value
+(1,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','Chưa có dữ liệu','abcd','1.jpg',1),
+(2,'Bài học vận tốc, quãng đường, thời gian - môn Toán','Các tính quãng đường, vận tốc, thời gian','chưa có dữ liệu','abcd','2.jpg',1),
+(3,'Bài học đơn vị đo độ dài - môn Toán','Cung cấp kiến thức về độ dài: mm, cm, dm, m, km','chưa có dữ liệu','abcd','3.png',1),
+(4,'Bài học Việt Nam-Tổ quốc em - môn Tiếng việt','Phân tích về chủ đề đất nước','chưa có dữ liệu','abcd','4.png',2),
+(5,'Bài học Cánh chim hòa bình - môn Tiếng việt','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','5.jpg',2),
+(6,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','6.jpg',1),
+(7,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','7.jpg',1),
+(8,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','8.jpg',1),
+(9,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','9.jpg',1);
 
 
 --
@@ -343,11 +343,15 @@ ALTER TABLE `thongtinbailam`
   ADD CONSTRAINT `thongtinbailam_ibfk_2` FOREIGN KEY (`MaNguoiDung`) REFERENCES `nguoidung` (`MaNguoiDung`);
 
 --
+ALTER TABLE `baihoc`
+  ADD CONSTRAINT `baihoc_ibfk_2` FOREIGN KEY (`MaMonHoc`) REFERENCES `monhoc` (`MaMonHoc`);
 -- Constraints for table `ykiennguoidung`
 --
 ALTER TABLE `ykiennguoidung`
   ADD CONSTRAINT `ykiennguoidung_ibfk_1` FOREIGN KEY (`MaNguoiDung`) REFERENCES `nguoidung` (`MaNguoiDung`);
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

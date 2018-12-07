@@ -10,7 +10,7 @@
                         <input class="login-form" type="text" id="SDT" name="SDT" placeholder="Số điện thoại" required=" " onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                         <input class="login-form" type="password" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" required=" ">
                         <input class="login-form" type="password" id="NhapLaiMatKhau" name="NhapLaiMatKhau" placeholder="Nhập lại mật khẩu" required=" ">
-                        <button class="button-login" type="button" id="btnDangKy">Đăng ký</button>
+                        <button class="button-login" type="submit" id="btnDangKy">Đăng ký</button>
                   </form>
             </div>
             
@@ -22,14 +22,17 @@
 
 {{#section 'js'}}
       <script type="text/javascript">
-            $('#btnDangKy').on('click', function() {
+            $('#NhapLaiMatKhau').on('keyup', function() {
                 var mk = $('#MatKhau').val();
                 var mk_again = $('#NhapLaiMatKhau').val();
                 if(mk === mk_again) {
-                    $('#form_dangky').submit();
+                    $('#btnDangKy').css("background-color","#03a9f4");
+                    $('#btnDangKy').prop('disabled', false);
                 } else {
-                     alert("Mật khẩu xác nhận không khớp");
+                    $('#btnDangKy').css("background-color","white");
+                    $('#btnDangKy').prop('disabled', true);
                 }
             });
+
       </script>
 {{/section}}

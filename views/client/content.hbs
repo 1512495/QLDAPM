@@ -95,7 +95,7 @@
 	</br>
 	<a href="#">
 		<center><button type="button" class="btn btn-warning btn-lg">
-				Gửi bài
+				Nộp bài
 			</button></center>
 	</a>
 </div>
@@ -274,7 +274,7 @@
 	function start() {
 		$('#confirm').hide();
 		$('#noiDung').show();
-		seconds = new Date().getTime() + 10000;
+		seconds = new Date().getTime() + 100000;
 		$('#clock').countdown(seconds, { elapse: false })
 			.on('update.countdown', function (event) {
 				var $this = $(this);
