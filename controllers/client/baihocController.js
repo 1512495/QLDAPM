@@ -17,6 +17,7 @@ router.get('/chitiet/:idBH', (req, res) => {
    var id = req.params.idBH;
    var p1=baihocRepo.loadBaiHoc(id);
    var p2=baihocRepo.loadTiepTheo(id);
+  // console.log(p2)
    Promise.all([p1, p2]).then(([rows, rows2]) => {
         var vm = {
             baihoc: rows,
@@ -24,6 +25,7 @@ router.get('/chitiet/:idBH', (req, res) => {
         }
          res.render('client/chitietbaihoc', vm);
      });
+
 
 
 
