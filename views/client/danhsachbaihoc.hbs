@@ -59,12 +59,25 @@
 
 <nav style="text-align:center">
 	<ul class="pagination">
-		<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+		<li><a href="javascript:previous()" id="prev" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+		<li><a href="/baihoc/1">1</a></li>
+		<li><a href="/baihoc/2">2</a></li>
+		<li><a href="/baihoc/3">3</a></li>
+		<li><a href="/baihoc/4">4</a></li>
+		<li><a href="/baihoc/5">5</a></li>
+		<li><a href="javascript:next()" id="next"aria-label="Next"><span aria-hidden="true">»</span></a></li>
 	</ul>
 </nav>
+
+<script>
+	function previous(){
+		let token = window.location.href.split("/");
+		let page = token[token.length - 1];
+		window.location.replace("/baihoc/" + (parseInt(page) - 1));
+	}
+	function next(){
+		let token = window.location.href.split("/");
+		let page = token[token.length - 1];
+		window.location.replace("/baihoc/" + (parseInt(page) + 1));
+	}
+</script>

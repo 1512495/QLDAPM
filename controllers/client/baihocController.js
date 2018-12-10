@@ -3,12 +3,23 @@ var express = require("express"),
 
 var router = express.Router();
 
-router.get("/", (req, res) => {
-  baihocRepo.loadAll().then(rows => {
-      var vm = {
-          baihoc: rows
-      };
-      res.render("client/danhsachbaihoc", vm );
+router.get("/", async (req, res) => {
+    var rows = await baihocRepo.loadTiepTheo(0)
+    var page = await baihocRepo.countPage();
+    var vm = {
+        baihoc: rows,
+        page: page.total
+    }
+    res.render("client/danhsachbaihoc", vm);
+});
+
+router.get("/:page", (req, res) => {
+    let page = req.params.page;
+    baihocRepo.loadTiepTheo(page - 1).then(rows => {
+        var vm = {
+            baihoc: rows
+        };
+        res.render("client/danhsachbaihoc", vm );
     });
 });
 

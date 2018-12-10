@@ -13,6 +13,11 @@ exports.loadBaiHoc = idBaiHoc => {
 
 
 exports.loadTiepTheo = idBaiHoc => {
-    var sql = `select * from baihoc where id> ${idBaiHoc} limit 4`;
+    var sql = `select * from baihoc where id > ${idBaiHoc} * 4 limit 4`;
+    return db.load(sql);
+}
+
+exports.countPage = () => {
+    var sql = `select count(*) as total from baihoc`;
     return db.load(sql);
 }
