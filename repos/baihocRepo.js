@@ -13,6 +13,6 @@ exports.loadBaiHoc = idBaiHoc => {
 
 
 exports.loadTiepTheo = idBaiHoc => {
-    var sql = `select * from baihoc limit 4 offset ${idBaiHoc}`;
+    var sql = `select * from baihoc where id> ${idBaiHoc} limit 4`;
     return db.load(sql);
 }
