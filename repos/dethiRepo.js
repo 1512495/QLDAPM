@@ -31,3 +31,7 @@ exports.update = (dethi) => {
     SoCau='${dethi.SoCau}', SoDiemMotCau='${dethi.SoDiemMotCau}' where MaDeThi = '${dethi.MaDeThi}'`;
     return db.save(sql);
 }
+exports.load_Tiep = id=>{
+    var sql = `select * from dethi where MaDeThi > ${id} limit 4`;
+    return db.load(sql);
+}

@@ -103,12 +103,19 @@
 <div class="banner-bottom">
 	<div class="banner-bottom-grids">
 		<div class="col-md-4 banner-bottom-grid">
-			<h3>Chào mừng đến với<span> Luyện thi lớp 6</span></h3>
-			<h2><i>" Trang luyện thi chất lượng, uy tín. "</i></h2>
-			<p>Giới thiệu thông tin về trang ở đây
-				<span></span></p>
-			<div class="more">
-				<a href="single.html" class="hvr-rectangle-out">Read More...</a>
+			<h3>Các đề thi tiếp theo</h3>
+			<div class="l_g">
+				{{#each baitieptheo}}
+				<div class="banner-bottom-grid1">
+					<div class="col-xs-4 banner-bottom-grid-left">
+						<img src="../../images/10.jpg" alt=" " class="img-responsive" />
+					</div>
+					<div class="col-xs-8 banner-bottom-grid-left">
+						<h4><a href="/dethi/chitiet?id={{MaDeThi}}"> {{TenDeThi}}</a></h4>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				 {{/each}}
 			</div>
 			<div class="tags">
 				<h4>Tags</h4>

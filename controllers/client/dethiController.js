@@ -14,11 +14,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/chitiet", (req, res) => {
-    cauhoiRepo.loadDeThi(req.query.id).then(rows => {
-      var vm = {
-          cauhois: rows
-      };
-      res.render("client/content", vm );
+    let id = req.query.id;
+    var p1 = cauhoiRepo.loadDeThi(id);
+    var p2 = dethiRepo.load_Tiep(id);
+    Promise.all([p1, p2]).then(([rows, rows2]) => {
+        var vm = {
+            cauhois: rows,
+            baitieptheo: rows2
+        }
+        res.render('client/content', vm);
     });
 });
 
