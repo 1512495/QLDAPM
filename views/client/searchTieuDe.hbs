@@ -1,0 +1,88 @@
+{{#section 'css'}}
+     <style type="text/css" media="screen">
+      	.kt_content_item {
+		    border-bottom: 1px dotted #cecece;
+		    display: inline-block;
+		    text-align: left;
+		    width: 100%;
+		    padding: 20px 0;
+		}
+		.img_kt._month8 {
+		    background: rgba(0, 0, 0, 0) url(../image/banner/img_kt_thang_8.png) no-repeat scroll left center;
+		}
+		.kt_content_item ._right {
+		    display: inline-block;
+		    margin-top: 25px;
+		    vertical-align: top;
+		    width: 530px;
+		}
+		.ml-30{
+			margin-left: 30px;
+		}
+		.ml-20{
+			margin-left: 20px;
+		}
+		a {
+		    text-decoration: none;
+		    color: #474747;
+		    padding: 0;
+		    margin: 0;
+		}
+     </style>
+{{/section}}
+	<!-- services -->
+{{#if soluongBH}}
+<div class="services">
+	<p>Không có bài học nào phù hợp</p>
+</div>
+{{else}}
+<div class="services">
+	<h2>Các bài học được tìm kiếm</h2>
+	
+	<div class="services-grids1">
+		{{#each baihoc}}
+			 <div class="kt_content_item ml-20">
+	            <img width="100px" height="100px" src="/images/{{HinhAnh}}">
+	            <div class="_right ml-30">
+	                <a href="/baihoc/chitiet/{{id}}">
+	                    <div>
+	                        <h4 class="_title">
+	                            {{TieuDe}}
+	                        </h4>
+	                    </div>
+	                </a>
+	                <div style="color:#888888;font-size: 14px;">{{TomTat}}</div>
+	            </div>
+	        </div>
+        {{/each}}
+
+		
+		<div class="clearfix"> </div>
+	</div>
+</div>
+	<!-- //services -->
+	{{/if}}
+
+<nav style="text-align:center">
+	<ul class="pagination">
+		<li><a href="javascript:previous()" id="prev" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+		{{#each page}}
+		<li><a href="/baihoc/{{this}}" id="page-{{this}}">{{this}}</a></li>
+		{{/each}}
+		<li><a href="javascript:next()" id="next"aria-label="Next"><span aria-hidden="true">»</span></a></li>
+	</ul>
+</nav>
+
+<script>
+	let token = window.location.href.split("/");
+	let page = token[token.length - 1];
+	if(parseInt(page)){
+		$("#page-" + page).css("color", "red");
+	}
+	function previous(){
+		window.location.replace("/baihoc/" + (parseInt(page) - 1));
+	}
+	function next(){
+		window.location.replace("/baihoc/" + (parseInt(page) + 1));
+	}
+</script>

@@ -17,6 +17,7 @@ var nguoidungController = require('./controllers/admin/nguoidungController');
 var dethiCtrlClient = require('./controllers/client/dethiController');
 var lienheController = require('./controllers/client/lienheController');
 var baihocCtrlClient = require('./controllers/client/baihocController');
+var searchController = require('./controllers/client/searchController');
 var nguoidungRepo = require('./repos/nguoidungRepo');
 
 
@@ -61,6 +62,7 @@ app.use('/admin/nguoidung', nguoidungController);
 app.use('/baihoc', baihocCtrlClient);
 app.use('/dethi', dethiCtrlClient);
 app.use('/lienhe', lienheController);
+app.use('/search',searchController);
 
 app.get('/gioithieu', (req, res) => {
     res.render('client/gioithieu');
