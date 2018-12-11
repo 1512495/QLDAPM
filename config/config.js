@@ -1,3 +1,3 @@
 module.exports = {
-	QUESTIONS_PER_PAGE: 10
+	QUESTIONS_PER_PAGE: 4
 }

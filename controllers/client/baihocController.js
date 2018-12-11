@@ -1,26 +1,35 @@
 var express = require("express"),
   baihocRepo = require("../../repos/baihocRepo");
-
+var {QUESTIONS_PER_PAGE} = require('../../config/config');
 var router = express.Router();
 
 router.get("/", async (req, res) => {
     var rows = await baihocRepo.loadTiepTheo(0)
-    var page = await baihocRepo.countPage();
+    var totalPage = await baihocRepo.countPage();
+    var total = [];
+    for(let i = 0; i < totalPage[0].total/QUESTIONS_PER_PAGE; i++){
+        total.push(i + 1);
+    }
     var vm = {
         baihoc: rows,
-        page: page.total
+        page: total
     }
     res.render("client/danhsachbaihoc", vm);
 });
 
-router.get("/:page", (req, res) => {
+router.get("/:page", async (req, res) => {
     let page = req.params.page;
-    baihocRepo.loadTiepTheo(page - 1).then(rows => {
-        var vm = {
-            baihoc: rows
-        };
-        res.render("client/danhsachbaihoc", vm );
-    });
+    var rows = await baihocRepo.loadTiepTheo(page - 1)
+    var totalPage = await baihocRepo.countPage();
+    var total = [];
+    for(let i = 0; i < totalPage[0].total/QUESTIONS_PER_PAGE; i++){
+        total.push(i + 1);
+    }
+    var vm = {
+        baihoc: rows,
+        page: total
+    }
+    res.render("client/danhsachbaihoc", vm);
 });
 
 router.get('/chitiet/:idBH', (req, res) => {
