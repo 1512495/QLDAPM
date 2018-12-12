@@ -75,16 +75,16 @@
 		<h3>{{NoiDung}}</h3>
 		</br>
 		<div inx="1_0" value="0" tpl="multiple_choice">
-			<button class="basic_radio btn btn-primary" inx="1_0" value="1">
+			<button id="{{MaCauHoi}}_a" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="1">
 				A. {{A}}
 			</button>
-			<button class="basic_radio btn btn-primary" inx="1_0" value="2">
+			<button id="{{MaCauHoi}}_b" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="2">
 				B. {{B}}
 			</button>
-			<button class="basic_radio btn btn-primary" inx="1_0" value="3">
+			<button id="{{MaCauHoi}}_c" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="3">
 				C. {{C}}
 			</button>
-			<button class="basic_radio btn btn-primary" inx="1_0" value="4">
+			<button id="{{MaCauHoi}}_d" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="4">
 				D. {{D}}
 			</button>
 		</div>
@@ -115,7 +115,7 @@
 					</div>
 					<div class="clearfix"> </div>
 				</div>
-				 {{/each}}
+				{{/each}}
 			</div>
 			<div class="tags">
 				<h4>Tags</h4>
@@ -296,5 +296,23 @@
 		$('#noiDung').hide();
 		$('#end').show();
 		$('#clock').hide();
+	}
+
+	function select(event) {
+		let base = event.target.id.split('_')[0];
+
+		let strA = base + '_a';
+		let strB = base + '_b';
+		let strC = base + '_c';
+		let strD = base + '_d';
+		let str = [strA, strB, strC, strD];
+
+		for (let i = 0; i < str.length; i++) {
+			if ($('#' + str[i]).hasClass('selected_radio')) {
+				$('#' + str[i]).removeClass('selected_radio');
+				$('#' + str[i]).addClass('basic_radio');
+			}
+		}
+		$('#' + event.target.id).addClass('selected_radio');
 	}
 </script>
