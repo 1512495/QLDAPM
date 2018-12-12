@@ -53,14 +53,26 @@
 <nav style="text-align:center">
 	<ul class="pagination">
 		<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
+		{{#each page}}
+		<li><a href="/dethi/{{this}}" id="page-{{this}}">{{this}}</a></li>
+		{{/each}}
 		<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 	</ul>
 </nav>
 	<!-- //services -->
+
+<script>
+	let token = window.location.href.split("/");
+	let page = token[token.length - 1];
+	if(parseInt(page)){
+		$("#page-" + page).css("color", "red");
+	}
+	function previous(){
+		window.location.replace("/dethi/" + (parseInt(page) - 1));
+	}
+	function next(){
+		window.location.replace("/dethi/" + (parseInt(page) + 1));
+	}
+</script>
 
 
