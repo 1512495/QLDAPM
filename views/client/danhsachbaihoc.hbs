@@ -70,13 +70,24 @@
 <script>
 	let token = window.location.href.split("/");
 	let page = token[token.length - 1];
+	let totalPage = $(".pagination a").length - 2;
+	if(page > totalPage){
+		window.location.replace("/baihoc/" + totalPage);
+	}
+	if(page < 1){
+		window.location.replace("/baihoc/1");
+	}
 	if(parseInt(page)){
 		$("#page-" + page).css("color", "red");
 	}
 	function previous(){
-		window.location.replace("/baihoc/" + (parseInt(page) - 1));
+		if(page > 1){
+			window.location.replace("/baihoc/" + (parseInt(page) - 1));
+		}
 	}
 	function next(){
-		window.location.replace("/baihoc/" + (parseInt(page) + 1));
+		if(page < totalPage){
+			window.location.replace("/baihoc/" + (parseInt(page) + 1));
+		}
 	}
 </script>
