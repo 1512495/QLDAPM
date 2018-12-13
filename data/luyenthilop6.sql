@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2018 at 05:50 PM
+-- Generation Time: Dec 12, 2018 at 01:45 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -11,8 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-create database luyenthilop6;
-use luyenthilop6;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -21,38 +20,40 @@ use luyenthilop6;
 
 --
 -- Database: `luyenthilop6`
--- drop database luyenthilop6
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `baihoc`
 --
 
-
-DROP TABLE IF EXISTS `baihoc`;
-CREATE TABLE IF NOT EXISTS `baihoc` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `baihoc` (
+  `id` int(11) NOT NULL,
   `TieuDe` varchar(200) NOT NULL,
   `TomTat` varchar(500) NOT NULL,
   `ChiTiet` varchar(5000) NOT NULL,
   `NoiDung` varchar(5000) NOT NULL,
   `HinhAnh` varchar(200) DEFAULT NULL,
-  `MaMonHoc` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `MaMonHoc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-INSERT INTO `baihoc` (`id`, `TieuDe`, `TomTat`,`ChiTiet`,`NoiDung`,`HinhAnh`,`MaMonHoc`) value
-(1,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','Chưa có dữ liệu','abcd','1.jpg',1),
-(2,'Bài học vận tốc, quãng đường, thời gian - môn Toán','Các tính quãng đường, vận tốc, thời gian','chưa có dữ liệu','abcd','2.jpg',1),
-(3,'Bài học đơn vị đo độ dài - môn Toán','Cung cấp kiến thức về độ dài: mm, cm, dm, m, km','chưa có dữ liệu','abcd','3.png',1),
-(4,'Bài học Việt Nam-Tổ quốc em - môn Tiếng việt','Phân tích về chủ đề đất nước','chưa có dữ liệu','abcd','4.png',2),
-(5,'Bài học Cánh chim hòa bình - môn Tiếng việt','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','5.jpg',2),
-(6,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','6.jpg',1),
-(7,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','7.jpg',1),
-(8,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','8.jpg',1),
-(9,'Bài học phân số thập phân - môn Toán','Cung cấp kiến thức cơ bản, các thao tác tính','chưa có dữ liệu','abcd','9.jpg',1);
+--
+-- Dumping data for table `baihoc`
+--
 
+INSERT INTO `baihoc` (`id`, `TieuDe`, `TomTat`, `ChiTiet`, `NoiDung`, `HinhAnh`, `MaMonHoc`) VALUES
+(1, 'Bài học phân số thập phân - môn Toán', 'Cung cấp kiến thức cơ bản, các thao tác tính', 'Chưa có dữ liệu', 'abcd', '1.jpg', 1),
+(2, 'Bài học vận tốc, quãng đường, thời gian - môn Toán', 'Các tính quãng đường, vận tốc, thời gian', 'chưa có dữ liệu', 'abcd', '2.jpg', 1),
+(3, 'Bài học đơn vị đo độ dài - môn Toán', 'Cung cấp kiến thức về độ dài: mm, cm, dm, m, km', 'chưa có dữ liệu', 'abcd', '3.png', 1),
+(4, 'Bài học Việt Nam-Tổ quốc em - môn Tiếng việt', 'Phân tích về chủ đề đất nước', 'chưa có dữ liệu', 'abcd', '4.png', 2),
+(5, 'Bài học Cánh chim hòa bình - môn Tiếng việt', 'Cung cấp kiến thức cơ bản, các thao tác tính', 'chưa có dữ liệu', 'abcd', '5.jpg', 2),
+(6, 'Bài học phân số thập phân - môn Toán', 'Cung cấp kiến thức cơ bản, các thao tác tính', 'chưa có dữ liệu', 'abcd', '6.jpg', 1),
+(7, 'Bài học phân số thập phân - môn Toán', 'Cung cấp kiến thức cơ bản, các thao tác tính', 'chưa có dữ liệu', 'abcd', '7.jpg', 1),
+(8, 'Bài học phân số thập phân - môn Toán', 'Cung cấp kiến thức cơ bản, các thao tác tính', 'chưa có dữ liệu', 'abcd', '8.jpg', 1),
+(9, 'Bài học phân số thập phân - môn Toán', 'Cung cấp kiến thức cơ bản, các thao tác tính', 'chưa có dữ liệu', 'abcd', '9.jpg', 1);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `cauhoi`
@@ -236,6 +237,9 @@ INSERT INTO `ykiennguoidung` (`MaYKien`, `MaNguoiDung`, `NoiDung`, `NgayGoi`) VA
 --
 -- Indexes for table `baihoc`
 --
+ALTER TABLE `baihoc`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `baihoc_ibfk_2` (`MaMonHoc`);
 
 --
 -- Indexes for table `cauhoi`
@@ -292,13 +296,13 @@ ALTER TABLE `ykiennguoidung`
 -- AUTO_INCREMENT for table `baihoc`
 --
 ALTER TABLE `baihoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `cauhoi`
 --
 ALTER TABLE `cauhoi`
-  MODIFY `MaCauHoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `MaCauHoi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `dethi`
@@ -341,6 +345,12 @@ ALTER TABLE `ykiennguoidung`
 --
 
 --
+-- Constraints for table `baihoc`
+--
+ALTER TABLE `baihoc`
+  ADD CONSTRAINT `baihoc_ibfk_2` FOREIGN KEY (`MaMonHoc`) REFERENCES `monhoc` (`MaMonHoc`);
+
+--
 -- Constraints for table `cauhoi`
 --
 ALTER TABLE `cauhoi`
@@ -355,15 +365,11 @@ ALTER TABLE `thongtinbailam`
   ADD CONSTRAINT `thongtinbailam_ibfk_2` FOREIGN KEY (`MaNguoiDung`) REFERENCES `nguoidung` (`MaNguoiDung`);
 
 --
-ALTER TABLE `baihoc`
-  ADD CONSTRAINT `baihoc_ibfk_2` FOREIGN KEY (`MaMonHoc`) REFERENCES `monhoc` (`MaMonHoc`);
 -- Constraints for table `ykiennguoidung`
 --
 ALTER TABLE `ykiennguoidung`
   ADD CONSTRAINT `ykiennguoidung_ibfk_1` FOREIGN KEY (`MaNguoiDung`) REFERENCES `nguoidung` (`MaNguoiDung`);
 COMMIT;
-
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -32,7 +32,7 @@
 {{/section}}
 	<!-- services -->
 <div class="services">
-	<h2>Danh sách bài học luyện thi</h2>
+	<h2>Danh sách bài học</h2>
 	
 	<div class="services-grids1">
 		{{#each baihoc}}
@@ -70,18 +70,13 @@
 <script>
 	let token = window.location.href.split("/");
 	let page = token[token.length - 1];
-  let total = $(".pagination a").length - 2;
 	if(parseInt(page)){
 		$("#page-" + page).css("color", "red");
 	}
 	function previous(){
-    if(page != 1){
-		  window.location.replace("/baihoc/" + (parseInt(page) - 1));
-    }
+		window.location.replace("/baihoc/" + (parseInt(page) - 1));
 	}
 	function next(){
-    if(page != total){
-		  window.location.replace("/baihoc/" + (parseInt(page) + 1));
-    }
+		window.location.replace("/baihoc/" + (parseInt(page) + 1));
 	}
 </script>

@@ -11,7 +11,6 @@ exports.loadBaiHoc = idBaiHoc => {
     return db.load(sql);
 }
 
-
 exports.loadTiepTheo = idBaiHoc => {
     var sql = `select * from baihoc where id > ${idBaiHoc} * 4 limit 4`;
     return db.load(sql);
