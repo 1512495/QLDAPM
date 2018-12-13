@@ -5,21 +5,10 @@ var express = require("express"),
 var router = express.Router();
 
 router.get("/", async (req, res) => {
-    var rows = await dethiRepo.load_Tiep(0)
-    var totalPage = await dethiRepo.countPage();
-    var total = [];
-    for(let i = 0; i < totalPage[0].total/4; i++){
-        total.push(i + 1);
+    let page = req.query.page;
+    if(!parseInt(page)){
+        page = 1;
     }
-    var vm = {
-        dethis: rows,
-        page: total
-    }
-    res.render("client/danhsachdethi", vm);
-});
-
-router.get("/:page", async (req, res) => {
-    let page = req.params.page;
     var rows = await dethiRepo.load_Tiep(page - 1)
     var totalPage = await dethiRepo.countPage();
     var total = [];
@@ -32,6 +21,24 @@ router.get("/:page", async (req, res) => {
     }
     res.render("client/danhsachdethi", vm);
 });
+
+// router.get("/:", async (req, res) => {
+//     let page = req.params.page;
+//     if(!parseInt(page)){
+//         page = 1;
+//     }
+//     var rows = await dethiRepo.load_Tiep(page - 1)
+//     var totalPage = await dethiRepo.countPage();
+//     var total = [];
+//     for(let i = 0; i < totalPage[0].total/4; i++){
+//         total.push(i + 1);
+//     }
+//     var vm = {
+//         dethis: rows,
+//         page: total
+//     }
+//     res.render("client/danhsachdethi", vm);
+// });
 
 router.get("/chitiet", (req, res) => {
     let id = req.query.id;
