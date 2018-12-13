@@ -6,16 +6,12 @@ exports.load = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-<<<<<<< HEAD
             password: '',
-=======
-            password: 'root',
->>>>>>> f3beb430cee72265741bdc2115411449d2442ceb
             database: 'luyenthilop6'
         });
 
-        cn.connect((err)=>{
-            if(err){
+        cn.connect((err) => {
+            if (err) {
                 throw err;
             }
             console.log("MySql Conected...");
@@ -39,16 +35,12 @@ exports.save = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-<<<<<<< HEAD
             password: '',
-=======
-            password: 'root',
->>>>>>> f3beb430cee72265741bdc2115411449d2442ceb
             database: 'luyenthilop6'
         });
 
-        cn.connect((err)=>{
-            if(err){
+        cn.connect((err) => {
+            if (err) {
                 throw err;
             }
             console.log("MySql Saved...");
