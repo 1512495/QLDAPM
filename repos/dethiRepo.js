@@ -32,6 +32,10 @@ exports.update = (dethi) => {
     return db.save(sql);
 }
 exports.load_Tiep = id=>{
-    var sql = `select * from dethi where MaDeThi > ${id} limit 4`;
+    var sql = `select * from dethi where MaDeThi > ${id} * 4 limit 4`;
+    return db.load(sql);
+}
+exports.countPage = () => {
+    var sql = `select count(*) as total from dethi`;
     return db.load(sql);
 }

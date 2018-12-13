@@ -4,10 +4,10 @@ var {QUESTIONS_PER_PAGE} = require('../../config/config');
 var router = express.Router();
 
 router.get("/", async (req, res) => {
-    var rows = await baihocRepo.loadTiepTheo(0)
-    var totalPage = await baihocRepo.countPage();
+    var totalPage = (await baihocRepo.countPage())[0].total/QUESTIONS_PER_PAGE;
     var total = [];
-    for(let i = 0; i < totalPage[0].total/QUESTIONS_PER_PAGE; i++){
+    var rows = await baihocRepo.loadTiepTheo(0);
+    for(let i = 0; i < totalPage; i++){
         total.push(i + 1);
     }
     var vm = {
@@ -19,10 +19,19 @@ router.get("/", async (req, res) => {
 
 router.get("/:page", async (req, res) => {
     let page = req.params.page;
-    var rows = await baihocRepo.loadTiepTheo(page - 1)
-    var totalPage = await baihocRepo.countPage();
+    if(!page){
+        page = 1;
+    }
+    var totalPage = (await baihocRepo.countPage())[0].total/QUESTIONS_PER_PAGE;
     var total = [];
-    for(let i = 0; i < totalPage[0].total/QUESTIONS_PER_PAGE; i++){
+    if(page < 1){
+        page = 1;
+    }
+    if(page > totalPage){
+        page = totalPage;
+    }
+    var rows = await baihocRepo.loadTiepTheo(page - 1);
+    for(let i = 0; i < totalPage; i++){
         total.push(i + 1);
     }
     var vm = {

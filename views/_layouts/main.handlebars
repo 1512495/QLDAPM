@@ -41,6 +41,17 @@
         vertical-align: top;
         position: relative;
     }
+    .selected_radio {
+        background-color: red;
+        border-radius: 7px;
+        width: 40%;
+        text-align: center;
+        font-size: 18px;
+        margin: 5px;
+        padding: 10px;
+        vertical-align: top;
+        position: relative;
+    }
 </style>
 {{{_sections.css}}}
 </head>
@@ -69,8 +80,8 @@
                         <h1><a href="/">N<span class="color">h</span><span class="color1">ó</span><span class="color2">m</span> <span>5</span> <i>Luyện thi vào lớp 6</i></a></h1>
                     </div>
                     <div class="search">
-                        <form>
-                            <input type="text" value="Search Here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Here...';}" required="">
+                        <form method="POST" action="/search">
+                            <input type="text" value="Search Here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Here...';}" required=""  name="searchTieuDe">
                             <input type="submit" value=" " >
                         </form>
                     </div>

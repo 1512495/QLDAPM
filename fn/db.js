@@ -6,7 +6,11 @@ exports.load = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
+<<<<<<< HEAD
             password: '',
+=======
+            password: 'root',
+>>>>>>> f3beb430cee72265741bdc2115411449d2442ceb
             database: 'luyenthilop6'
         });
 
@@ -35,7 +39,11 @@ exports.save = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
+<<<<<<< HEAD
             password: '',
+=======
+            password: 'root',
+>>>>>>> f3beb430cee72265741bdc2115411449d2442ceb
             database: 'luyenthilop6'
         });
 

@@ -70,11 +70,22 @@
 <script>
 	let token = window.location.href.split("/");
 	let page = token[token.length - 1];
+<<<<<<< HEAD
   let total = $(".pagination a").length - 2;
+=======
+	let totalPage = $(".pagination a").length - 2;
+	if(page > totalPage){
+		window.location.replace("/baihoc/" + totalPage);
+	}
+	if(page < 1){
+		window.location.replace("/baihoc/1");
+	}
+>>>>>>> f3beb430cee72265741bdc2115411449d2442ceb
 	if(parseInt(page)){
 		$("#page-" + page).css("color", "red");
 	}
 	function previous(){
+<<<<<<< HEAD
     if(page != 1){
 		  window.location.replace("/baihoc/" + (parseInt(page) - 1));
     }
@@ -83,5 +94,15 @@
     if(page != total){
 		  window.location.replace("/baihoc/" + (parseInt(page) + 1));
     }
+=======
+		if(page > 1){
+			window.location.replace("/baihoc/" + (parseInt(page) - 1));
+		}
+	}
+	function next(){
+		if(page < totalPage){
+			window.location.replace("/baihoc/" + (parseInt(page) + 1));
+		}
+>>>>>>> f3beb430cee72265741bdc2115411449d2442ceb
 	}
 </script>
