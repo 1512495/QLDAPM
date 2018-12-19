@@ -75,10 +75,46 @@
 		<h3>{{NoiDung}}</h3>
 		</br>
 		<div inx="1_0" value="0" tpl="multiple_choice">
+			{{#if daA}}
+			<button id="{{MaCauHoi}}_a" onclick="select(event)" class="basic_radio btn btn-primary right_answer" inx="1_0" value="1">
+				A. {{A}}
+			</button>
+			{{else}}
 			<button id="{{MaCauHoi}}_a" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="1">
 				A. {{A}}
 			</button>
-			<button id="{{MaCauHoi}}_b" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="2">
+			{{/if}}
+
+			{{#if daB}}
+			<button id="{{MaCauHoi}}_b" onclick="select(event)" class="basic_radio btn btn-primary right_answer" inx="1_0" value="1">
+				A. {{B}}
+			</button>
+			{{else}}
+			<button id="{{MaCauHoi}}_b" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="1">
+				A. {{B}}
+			</button>
+			{{/if}}
+
+			{{#if daC}}
+			<button id="{{MaCauHoi}}_c" onclick="select(event)" class="basic_radio btn btn-primary right_answer" inx="1_0" value="1">
+				A. {{C}}
+			</button>
+			{{else}}
+			<button id="{{MaCauHoi}}_c" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="1">
+				A. {{C}}
+			</button>
+			{{/if}}
+
+			{{#if daD}}
+			<button id="{{MaCauHoi}}_d" onclick="select(event)" class="basic_radio btn btn-primary right_answer" inx="1_0" value="1">
+				A. {{D}}
+			</button>
+			{{else}}
+			<button id="{{MaCauHoi}}_d" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="1">
+				A. {{D}}
+			</button>
+			{{/if}}
+			{{!-- <button id="{{MaCauHoi}}_b" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="2">
 				B. {{B}}
 			</button>
 			<button id="{{MaCauHoi}}_c" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="3">
@@ -86,15 +122,20 @@
 			</button>
 			<button id="{{MaCauHoi}}_d" onclick="select(event)" class="basic_radio btn btn-primary" inx="1_0" value="4">
 				D. {{D}}
-			</button>
+			</button> --}}
 		</div>
 	</div>
 	{{/each}}
 	</br>
+	<center>
+		<p id="result">
+		</p>
+	</center>
 	</br>
 	</br>
-	<a href="#">
-		<center><button type="button" class="btn btn-warning btn-lg">
+
+	<a>
+		<center><button id="nopBaiButton" type="button" class="btn btn-warning btn-lg" onclick="nopBai()">
 				Nộp bài
 			</button></center>
 	</a>
@@ -288,7 +329,7 @@
 				$this.html(event.strftime('<div> Thời gian còn lại để làm bài: <span>%H:%M:%S</span></div>'));
 			})
 			.on('finish.countdown', function () {
-				stop();
+				nopBai();
 			});;
 	}
 
@@ -315,4 +356,23 @@
 		}
 		$('#' + event.target.id).addClass('selected_radio');
 	}
+
+	function nopBai() {
+		let result = 0;
+		$('.basic_radio').each(function (index, elem) {
+			if ($(elem).hasClass('right_answer')) {
+				if ($(elem).hasClass('selected_radio')) {
+					result++;
+				}
+				$(elem).removeClass('right_answer');
+				$(elem).removeClass('selected_radio');
+				$(elem).removeClass('basic_radio');
+				$(elem).addClass('right_radio');
+			}
+		});
+		$('#nopBaiButton').attr('disabled', 'disabled');
+		$('#clock').hide();
+		$('#result').html("Số câu đúng là:" + result);
+	}
+
 </script>
