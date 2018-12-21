@@ -1,10 +1,10 @@
 var express = require("express"),
     cauhoiRepo = require('../../repos/cauhoiRepo'),
     dethiRepo = require("../../repos/dethiRepo");
-
+var restrict = require('../../middlewares/restrict');
 var router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/",restrict, async (req, res) => {
     let page = req.query.page;
     if (!parseInt(page)) {
         page = 1;
@@ -41,7 +41,7 @@ router.get("/", async (req, res) => {
 // });
 
 
-router.get("/chitiet", (req, res) => {
+router.get("/chitiet",restrict, (req, res) => {
     let id = req.query.id;
     var p1 = cauhoiRepo.loadDeThi(id);
     var p2 = dethiRepo.load_Tiep(id);

@@ -73,6 +73,38 @@
         <div class="container">
             <div class="body-content1">
             <!-- header -->
+            {{#if layoutVM.isLogged}}
+                            <li class="dropdown" style="margin-left:846px">
+                                    <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown" style="margin-right: 0px" >
+                                        <span class="fa fa-user nav-icon signin" aria-hidden="true">
+                                        Welcome {{layoutVM.curUser.TenNguoiDung}}
+                                        </span>
+                                    </a>
+                                     <ul id="MyAccountPop" class="dropdown-menu">
+                                         <li class="list-group-item">
+                                            <a href="#">
+                                                <i class="fa fa-user "></i>
+                                                Thông tin Tài khoản
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                        <li class="list-group-item">
+                                            <a href="#">
+                                                <i class="glyphicon glyphicon-home"></i>
+                                                Sổ địa chỉ
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" onclick="$('#logoutForm').submit()">
+                                                <i class="glyphicon glyphicon-log-out"></i>
+                                                Đăng xuất
+                                            </a>
+                                            <form id="logoutForm" action="/account/logout" style="hidden" method="post"></form>
+                                        </li>
+                                    </ul>
+                                </li>
+            {{else}}
             <div style="margin-left: 70%">
                 <span id="username">
                 </span>
@@ -86,6 +118,8 @@
                     <a href="#">Đăng xuất</a>
                 </span>
             </div>
+            {{/if}}
+
                 <div class="logo-search">
                     <div class="logo">
                         <h1><a href="/">N<span class="color">h</span><span class="color1">ó</span><span class="color2">m</span> <span>5</span> <i>Luyện thi vào lớp 6</i></a></h1>

@@ -3,6 +3,16 @@ var bodyParser = require('body-parser')
 var exphbs = require('express-handlebars');
 var exphbs_section = require('express-handlebars-sections');
 var path = require('path');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
+
+var handle404MDW = require('./middlewares/handle404'),
+    handleLayoutMDW = require('./middlewares/handleLayout'),
+    restrict = require('./middlewares/restrict'),
+    restrictAdmin = require('./middlewares/restrictAdmin');
+
+
+var accountController = require('./controllers/accountController');
 
 //Admin controller
 var ykienController = require('./controllers/admin/ykienController');
@@ -27,6 +37,30 @@ var nguoidungRepo = require('./repos/nguoidungRepo');
 
 
 var app = express();
+var sessionStore = new MySQLStore({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: '',
+    database: 'luyenthilop6',
+    createDatabaseTable: true,
+    schema: {
+        tableName: 'sessions',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    }
+});
+
+app.use(session({
+    key: 'session_cookie_name',
+    secret: 'session_cookie_secret',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -48,11 +82,12 @@ app.use(express.static(
     path.resolve(__dirname, 'public')
 ));
 
-
+app.use(handleLayoutMDW);
 app.get('/', (req, res) => {
     res.render('client/index');
 });
 
+app.use('/account', accountController);
 //admin page
 app.use('/admin/cauhoi', cauHoiController);
 app.use('/admin/ykien', ykienController);
@@ -95,9 +130,15 @@ app.get('/dangnhap', (req, res) => {
 app.post('/dangnhap', (req, res) => {
     nguoidungRepo.dangNhap(req.body).then(rows => {
         if (rows.length > 0) {
+            //console.log(req.session);
             //req.session.isLogged = true;
-            //req.session.curUser = rows[0];
-            res.redirect("/");
+            req.session.curUser = rows[0];
+            req.session.isLogged = true;
+            //console.log(req.body.TenNguoiDung);
+            //req.session.user = req.body.TenNguoiDung;
+            //console.log(req.session);
+            var url = '/';
+            res.redirect(url);
         } else {
             var vm = {
                 showError: true,
