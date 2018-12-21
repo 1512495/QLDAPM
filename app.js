@@ -27,6 +27,7 @@ var nguoidungRepo = require('./repos/nguoidungRepo');
 
 
 var app = express();
+
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
 
@@ -68,7 +69,7 @@ app.use('/baihoc', baihocCtrlClient);
 app.use('/monhoc', monhocCtrlClient);
 app.use('/dethi', dethiCtrlClient);
 app.use('/lienhe', lienheController);
-app.use('/search',searchController);
+app.use('/search', searchController);
 
 app.get('/gioithieu', (req, res) => {
     res.render('client/gioithieu');
